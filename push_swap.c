@@ -14,6 +14,8 @@
 
 int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
+
+	//this is a test
 	int i;
 	char **checked_values;
 	int checked_values_i;
