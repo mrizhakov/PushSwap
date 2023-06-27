@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <lbaron@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 07/04/23 23:58:22 by lbaron              #+#    #+#             */
-/*   Updated: 07/04/23 23:58:22 by lbaron             ###   ########.fr       */
+/*   Created: 2023/06/27 12:54:29 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/06/27 12:55:02 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "push_swap.h"
 
