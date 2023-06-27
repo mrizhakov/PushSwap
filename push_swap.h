@@ -23,6 +23,7 @@
 
 typedef struct s_stack {
 	int content;
+	int index;
 	struct s_stack *next;
 } t_stack;
 
@@ -76,6 +77,16 @@ void        bubble_sort(t_stack **head);
 int         ft_check_ll_doubles(t_stack **lst, int new);
 int         ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv);
 int         ft_number_checker(const char *str);
+
+t_stack *sa_swap(t_stack **head, int index1, int index2);
+t_stack *sb_swap(t_stack **head, int index1, int index2);
+void pa_push(t_stack **head_src, t_stack **head_dest);
+void pb_push(t_stack **head_src, t_stack **head_dest);
+t_stack* reassign_first_element(t_stack* source_list, t_stack* target_list);
+
+
+
+
 
 
 

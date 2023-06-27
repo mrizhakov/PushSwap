@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
 int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
@@ -57,6 +55,8 @@ int		main(int argc, char **argv)
 	int len;
 	t_stack *stk_a;
 	stk_a = NULL;
+	t_stack *stk_b;
+	stk_b = NULL;
 
 	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
 	{
@@ -77,6 +77,20 @@ int		main(int argc, char **argv)
 	bubble_sort(&stk_a);
 	printf("\nSorted stack is: \n");
 	print_list(stk_a);
+
+
+	printf("\nSA - swap 0 and 1 in stack A\n");
+	stk_a = sa_swap(&stk_a, 0, 1);
+	print_list(stk_a);
+
+	printf("\nPB - push to B top value from A\n");
+//	stk_b = reassign_first_element(stk_a, stk_b);
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+
 	free_list(stk_a);
 	return (0);
 }
