@@ -126,9 +126,9 @@ int ft_check_ll_doubles(t_stack **lst, int new)
 	temp = *lst;
 	if (*lst == NULL)
 	{
-	return (0);
+		return (0);
 	}
-	while (temp->next != NULL)
+	while (temp != NULL)
 	{
 		if (temp->content == new)
 		{
