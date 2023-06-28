@@ -92,5 +92,7 @@ int		main(int argc, char **argv)
 	print_list(stk_b);
 
 	free_list(stk_a);
+	free_list(stk_b);
+
 	return (0);
 }
