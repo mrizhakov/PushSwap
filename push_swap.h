@@ -20,6 +20,7 @@
 
 typedef struct s_stack {
 	int content;
+	int index;
 	struct s_stack *next;
 } t_stack;
 
@@ -64,8 +65,10 @@ void    sa_sb_swap(t_stack **head, char flag);
 void    ss_swap(t_stack **head1, t_stack **head2, char flag);
 void    pa_push(t_stack **head_src, t_stack **head_dest);
 void    pb_push(t_stack **head_src, t_stack **head_dest);
-void    ra_rotate(t_stack **lst);
-void	rb_rotate(t_stack **lst);
+
+void	ra_rb_rotate(t_stack **lst, char flag);
+void	rr_rotate(t_stack **lst1, t_stack **lst2, char flag);
+
 void	rra_rotate(t_stack **lst);
 void	rrb_rotate(t_stack **lst);
 void	rrr_rotate(t_stack **lst1, t_stack**lst2);
