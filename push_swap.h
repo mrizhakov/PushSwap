@@ -75,6 +75,9 @@ void	rrr_rotate(t_stack **lst1, t_stack**lst2);
 void    pb_push(t_stack **head_src, t_stack **head_dest);
 void    pa_push(t_stack **head_src, t_stack **head_dest);
 
+void normalize_indexes(t_stack **head);
+
+
 
 
 

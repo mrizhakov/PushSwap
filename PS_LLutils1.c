@@ -81,6 +81,32 @@ void bubble_sort(t_stack **head) {
 		prev = temp;
 	}
 }
+//function to assign normalized indexes
+//currently only finds the min value of the list
+void normalize_indexes(t_stack **head)
+{
+	if (*head == NULL) {
+		return; // List is empty or has only one node, no sorting needed
+	}
+	t_stack *temp = *head;
+	int min;
+	int i;
+	i = 0;
+	min = temp->content;
+	temp->index = i;
+		while (temp->next != NULL)
+		{
+			if (temp->next->content < temp->content)
+			{
+				temp->next->index = i;
+				min = temp->next->content;
+			}
+		temp = temp->next;
+	}
+	printf("Minimum value is : %d\n", min);
+	printf("Index is : %d\n", i);
+}
+
 
 t_stack *swap_nodes_by_value(t_stack **head, int val1, int val2) {
 	if (head == NULL || val1 == val2) {

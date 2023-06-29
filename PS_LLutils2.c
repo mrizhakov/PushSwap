@@ -93,8 +93,15 @@ void free_list(t_stack *head)
 
 void print_list(t_stack *head)
 {
-	while (head != NULL) {
-		printf("%d ", head->content);
+	ft_putstr_fd("Value   Index\n", 1);
+
+	while (head != NULL)
+	{
+		ft_putstr_fd("Value   Index\n", 1);
+
+		printf("%d         ", head->content);
+		printf("%d\n", head->index);
+
 		head = head->next;
 	}
 }
