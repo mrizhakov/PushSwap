@@ -82,6 +82,24 @@ t_stack *sb_swap(t_stack **head, int index1, int index2);
 void pa_push(t_stack **head_src, t_stack **head_dest);
 void pb_push(t_stack **head_src, t_stack **head_dest);
 t_stack* reassign_first_element(t_stack* source_list, t_stack* target_list);
+t_stack *pop_head(t_stack **lst);
+t_stack *pop_tail(t_stack **lst);
+void    ra_rotate(t_stack **lst);
+void	rb_rotate(t_stack **lst);
+void	rra_rotate(t_stack **lst);
+void	rrb_rotate(t_stack **lst);
+void	rrr_rotate(t_stack **lst1, t_stack**lst2);
+void    pb_push(t_stack **head_src, t_stack **head_dest);
+void    pa_push(t_stack **head_src, t_stack **head_dest);
+
+
+
+
+
+
+
+
+
 
 
 

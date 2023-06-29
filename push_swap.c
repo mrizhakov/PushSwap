@@ -66,6 +66,7 @@ int		main(int argc, char **argv)
 
 	printf("Original stack is : \n");
 	print_list(stk_a);
+	printf("\n");
 	len = ft_lstsize(stk_a);
 	printf("\nStack length is %i: \n", len);
 	stk_a = swap_nodes_by_value(&stk_a, 0, 1);
@@ -84,12 +85,38 @@ int		main(int argc, char **argv)
 	print_list(stk_a);
 
 	printf("\nPB - push to B top value from A\n");
-//	stk_b = reassign_first_element(stk_a, stk_b);
 	pb_push(&stk_a, &stk_b);
 	printf("\nStack A is: \n");
 	print_list(stk_a);
 	printf("\nStack B is: \n");
 	print_list(stk_b);
+
+
+	printf("\nStack A length is: %d \n", ft_lstsize(stk_a));
+
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nRA - rotate stack A - shift up elements by 1 (The first element becomes the last one.)\n");
+
+	ra_rotate(&stk_a);
+	printf("\nStack A is: \n");
+
+	print_list(stk_a);
+	printf("\n");
+
+	printf("\nRRA - reverse rotate stack A - shift elements down by 1 (The last element becomes the first one.)\n");
+	ra_rotate(&stk_a);
+	printf("\nStack A is: \n");
+
+	print_list(stk_a);
+
+
+
 
 	free_list(stk_a);
 	free_list(stk_b);
