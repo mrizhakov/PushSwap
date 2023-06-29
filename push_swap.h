@@ -10,11 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -25,23 +22,6 @@ typedef struct s_stack {
 	int content;
 	struct s_stack *next;
 } t_stack;
-
-//
-//typedef struct s_stack
-//{
-//	int *stack;
-//	struct s_stack *next;
-//	int size;
-//	int i;
-//} t_stack;
-
-/*
-typedef struct s_stack
-{
-    int *stack;
-    int size;
-    int i;
-}t_stack;*/
 
 int         ft_isdigit(int c);
 void        ft_putchar_fd(char c, int fd);
@@ -77,13 +57,13 @@ int         ft_check_ll_doubles(t_stack **lst, int new);
 int         ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv);
 int         ft_number_checker(const char *str);
 
-t_stack *sa_swap(t_stack **head, int index1, int index2);
-t_stack *sb_swap(t_stack **head, int index1, int index2);
-void pa_push(t_stack **head_src, t_stack **head_dest);
-void pb_push(t_stack **head_src, t_stack **head_dest);
-t_stack* reassign_first_element(t_stack* source_list, t_stack* target_list);
-t_stack *pop_head(t_stack **lst);
-t_stack *pop_tail(t_stack **lst);
+t_stack     *reassign_first_element(t_stack* source_list, t_stack* target_list);
+t_stack     *pop_head(t_stack **lst);
+t_stack     *pop_tail(t_stack **lst);
+void    sa_sb_swap(t_stack **head, char flag);
+void    ss_swap(t_stack **head1, t_stack **head2, char flag);
+void    pa_push(t_stack **head_src, t_stack **head_dest);
+void    pb_push(t_stack **head_src, t_stack **head_dest);
 void    ra_rotate(t_stack **lst);
 void	rb_rotate(t_stack **lst);
 void	rra_rotate(t_stack **lst);

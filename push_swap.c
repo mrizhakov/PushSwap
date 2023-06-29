@@ -64,27 +64,7 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 
-	printf("Original stack is : \n");
-	print_list(stk_a);
-	printf("\n");
-	len = ft_lstsize(stk_a);
-	printf("\nStack length is %i: \n", len);
-	stk_a = swap_nodes_by_value(&stk_a, 0, 1);
-	printf("Swaping elements with content 0 and 1 places gives the following stack: \n");
-	print_list(stk_a);
-	stk_a = swap_nodes_by_index(&stk_a, 1, 0);
-	printf("\nSwaping elements at indexes 1 and 2 places gives the following stack: \n");
-	print_list(stk_a);
-	bubble_sort(&stk_a);
-	printf("\nSorted stack is: \n");
-	print_list(stk_a);
-
-
-	printf("\nSA - swap 0 and 1 in stack A\n");
-	stk_a = sa_swap(&stk_a, 0, 1);
-	print_list(stk_a);
-
-	printf("\nPB - push to B top value from A\n");
+	printf("\n\nPB - push to B top value from A\n");
 	pb_push(&stk_a, &stk_b);
 	printf("\nStack A is: \n");
 	print_list(stk_a);
@@ -92,31 +72,228 @@ int		main(int argc, char **argv)
 	print_list(stk_b);
 
 
-	printf("\nStack A length is: %d \n", ft_lstsize(stk_a));
-
+	printf("\n\nSS upgraded - swap first two elements of A and B\n");
+	ss_swap(&stk_a, &stk_b, ' ');
 	printf("\nStack A is: \n");
 	print_list(stk_a);
 	printf("\nStack B is: \n");
 	print_list(stk_b);
 	printf("\n");
-	printf("\nStack A is: \n");
-	print_list(stk_a);
-	printf("\nRA - rotate stack A - shift up elements by 1 (The first element becomes the last one.)\n");
 
-	ra_rotate(&stk_a);
+	printf("\n\nSA upgraded - swap first two elements of A\n");
+	sa_sb_swap(&stk_a, 'a');
 	printf("\nStack A is: \n");
-
 	print_list(stk_a);
 	printf("\n");
 
-	printf("\nRRA - reverse rotate stack A - shift elements down by 1 (The last element becomes the first one.)\n");
-	ra_rotate(&stk_a);
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
 	printf("\nStack A is: \n");
-
 	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+
+	printf("\n\nSS upgraded - swap first two elements of A and B\n");
+	ss_swap(&stk_a, &stk_b, ' ');
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+
+	printf("\n\nPB - push to B top value from A\n");
+	pb_push(&stk_a, &stk_b);
+	printf("\nStack A is: \n");
+	print_list(stk_a);
+	printf("\nStack B is: \n");
+	print_list(stk_b);
+	printf("\n");
+
+//	printf("Original stack is : \n");
+//	print_list(stk_a);
+//	printf("\n");
+//	len = ft_lstsize(stk_a);
+//	printf("\nStack length is %i: \n", len);
+//	stk_a = swap_nodes_by_value(&stk_a, 0, 1);
+//	printf("Swaping elements with content 0 and 1 places gives the following stack: \n");
+//	print_list(stk_a);
+//	stk_a = swap_nodes_by_index(&stk_a, 1, 0);
+//	printf("\nSwaping elements at indexes 1 and 2 places gives the following stack: \n");
+//	print_list(stk_a);
+//	bubble_sort(&stk_a);
+//	printf("\nSorted stack is: \n");
+//	print_list(stk_a);
+//
+//
+//	printf("\nSA - swap 0 and 1 in stack A\n");
+//	stk_a = sa_swap(&stk_a, 0, 1);
+//	print_list(stk_a);
+//
+//	printf("\nPB - push to B top value from A\n");
+//	pb_push(&stk_a, &stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//
+//
+//	printf("\nStack A length is: %d \n", ft_lstsize(stk_a));
+//
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nRA - rotate stack A - shift up elements by 1 (The first element becomes the last one.)\n");
+//
+//	ra_rotate(&stk_a);
+//	printf("\nStack A is: \n");
+//
+//	print_list(stk_a);
+//	printf("\n");
+//
+//	printf("\nRRA - reverse rotate stack A - shift elements down by 1 (The last element becomes the first one.)\n");
+//	ra_rotate(&stk_a);
+//	printf("Stack A is: \n\n");
+//
+//	print_list(stk_a);
 
 
 
+
+//	printf("\n\nRB - rotate stack B - shift elements down by 1 (The first element becomes the last one.)\n");
+//	rb_rotate(&stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRB - rotate stack B - shift elements down by 1 (The first element becomes the last one.)\n");
+//	rb_rotate(&stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRA - rotate stack A - shift elements down by 1 (The first element becomes the last one.)\n");
+//	rb_rotate(&stk_a);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRA - rotate stack A - shift elements down by 1 (The first element becomes the last one.)\n");
+//	rb_rotate(&stk_a);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//
+//	printf("\n\nRRA - reverse rotate stack A - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rra_rotate(&stk_a);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//
+//	printf("\n\nRRA - reverse rotate stack A - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rra_rotate(&stk_a);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRRB - reverse rotate stack B - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rrb_rotate(&stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRRR - reverse rotate stack A and B - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rrr_rotate(&stk_a, &stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//	printf("\n\nRRR - reverse rotate stack A and B - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rrr_rotate(&stk_a, &stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\n");
+//
+//
+//
+//	printf("\n\nSA upgraded - swap first two elements of A\n");
+//	sa_swap_upgraded(&stk_a);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\n");
+
+
+
+
+
+//	printf("\nRRR - reverse rotate stack A and B - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rrr_rotate(&stk_a, &stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//
+//	printf("\nRRR - reverse rotate stack A and B - shift elements down by 1 (The last element becomes the first one.)\n");
+//	rrr_rotate(&stk_a, &stk_b);
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
 
 	free_list(stk_a);
 	free_list(stk_b);

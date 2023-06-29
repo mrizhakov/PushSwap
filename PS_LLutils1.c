@@ -11,23 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//
-//void	ft_lstiter(t_stack *lst, void (*f)(void *))
-//{
-//	t_stack *temp;
-//
-//	temp = *lst;
-//	if (*lst == NULL)
-//	{
-//		*lst = new;
-//		return ;
-//	}
-//	if (new == NULL)
-//		return ;
-//	while (temp->next != NULL)
-//		temp = temp->next;
-//	temp->next = new;
-//}
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
@@ -39,7 +22,6 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 	new->next = *lst;
 	*lst = new;
 }
-
 
 void	ft_sort_int_tab_og(int *tab, int size)
 {
@@ -68,45 +50,12 @@ void	ft_sort_int_tab_og(int *tab, int size)
 		}
 	}
 }
-//
-//void	ft_sort_linked_list(t_stack **head, int size)
-//{
-//	int	counter;
-//	int	storage;
-//	int	step;
-//
-//	counter = 0;
-//	step = 0;
-//
-//	if (*head == NULL || (*head)->next == NULL) {
-//		return; // List is empty or has only one node, no sorting needed
-//	}
-//	while (counter < size && step < size)
-//	{
-//		while (step <= size)
-//		{
-//			while (counter + 1 < size)
-//			{
-//				if (tab[counter + 1] < tab[counter])
-//				{
-//					storage = tab[counter];
-//					tab[counter] = tab[counter + 1];
-//					tab[counter + 1] = storage;
-//				}
-//				counter++;
-//			}
-//			counter = 0;
-//			step++;
-//		}
-//	}
-//}
 
 void swap_nodes(t_stack *node1, t_stack *node2) {
 	int temp = node1->content;
 	node1->content = node2->content;
 	node2->content = temp;
 }
-
 
 void bubble_sort(t_stack **head) {
 	if (*head == NULL || (*head)->next == NULL) {
@@ -229,39 +178,3 @@ t_stack *swap_nodes_by_index(t_stack **head, int index1, int index2)
 
 	return *head;
 }
-
-
-//
-//void	ft_lstclear(t_stack **lst, void (*del)(void *))
-//{
-//	t_stack	*temp;
-//
-//	if (!del)
-//		return ;
-//	while (lst && *lst)
-//	{
-//		temp = (*lst)->next;
-//		ft_lstdelone(*lst, del);
-//		*lst = temp;
-//	}
-//}
-//
-//void	ft_lstdelone(t_stack *lst, void (*del)(void *))
-//{
-//	if (!del)
-//		return ;
-//	del(lst->content);
-//	free(lst);
-//}
-//
-//void	ft_lstiter(t_stack *lst, void (*f)(void *))
-//{
-//	if (!lst)
-//		return ;
-//	while (lst->next != NULL)
-//	{
-//		f(lst->content);
-//		lst = lst->next;
-//	}
-//	f(lst->content);
-//}
