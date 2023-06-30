@@ -89,21 +89,34 @@ void normalize_indexes(t_stack **head)
 		return; // List is empty or has only one node, no sorting needed
 	}
 	t_stack *temp = *head;
-	int min;
+	int *min = (int *)malloc(sizeof(int)* 100);
 	int i;
+	int y = 0;
+
+
+
 	i = 0;
-	min = temp->content;
-	temp->index = i;
-		while (temp->next != NULL)
-		{
-			if (temp->next->content < temp->content)
+	//min = &temp->content;
+	min[0] = temp->content;
+
+	//temp->index = i;
+
+
+	while (temp->next != NULL)
+	{
+			if (temp->next->content < min[0])
 			{
-				temp->next->index = i;
-				min = temp->next->content;
+				//temp->next->index = i;
+				min[y] = temp->next->content;
+				y++;
 			}
 		temp = temp->next;
 	}
-	printf("Minimum value is : %d\n", min);
+	printf("Minimum value is : %d\n", min[0]);
+	printf("Minimum value is : %d\n", min[1]);
+	printf("Minimum value is : %d\n", min[2]);
+
+
 	printf("Index is : %d\n", i);
 }
 
