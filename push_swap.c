@@ -80,7 +80,21 @@ int		main(int argc, char **argv)
 	normalize_indexes(&stk_sorted);
 
 
-//	print_list(stk_sorted);;
+//	print_list(stk_sorted);
+	print_list(stk_a);;
+//	printf("LST[0][0]->index %i\n", stk_a[0].content);
+//	printf("LST[0][1]->index %i\n", stk_a[1].content);
+//	printf("LST[0][2]->index %i\n", stk_a[2].content);
+//	printf("LST[0][2]->index %i\n", stk_a[3].content);
+//	printf("LST[0][2]->index %i\n", stk_a[4].content);
+//	printf("LST[0][2]->index %i\n", stk_a[5].content);
+//	printf("LST[0][2]->index %i\n", stk_a[6].content);
+//	printf("LST[0][2]->index %i\n", stk_a[7].content);
+//	printf("LST[0][2]->index %i\n", stk_a[8].content);
+//	printf("LST[0][2]->index %i\n", stk_a[9].content);
+
+
+
 
 
 //	while (is_sorted(&stk_a, &stk_sorted) == 1)
@@ -93,25 +107,23 @@ int		main(int argc, char **argv)
 //	sort_small(&stk_a);
 
 
-	srand(time(NULL));   // Initialization, should only be called once.
-	int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
-
-	printf("RAND_MAX is %i", RAND_MAX);
+	//intf("RAND_MAX is %i", RAND_MAX);
 	while (is_sorted(&stk_a, &stk_sorted) != 1)
 	{
 		srand(time(NULL));   // Initialization, should only be called once.
 		int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
 
-		sort_small(&stk_a, randomsort_switch);
-		printf("\nStack A is: \n");
-
-		print_list(stk_a);
+		sort_small(&stk_a, &stk_sorted, randomsort_switch);
+//		printf("\nStack A is: \n");
+//
+//		print_list(stk_a);
 		//printf("\nSorted stack is: \n");
 
 //		print_list(stk_sorted);
 
 	}
-	//printf("Sorted!");
+	if (is_sorted(&stk_a, &stk_sorted) == 1)
+		printf("Sorted!");
 
 //	print_list_with_indexes(&stk_a);
 //	//stk_sorted = bubble_sort(&stk_a);

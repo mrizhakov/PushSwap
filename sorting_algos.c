@@ -12,14 +12,32 @@
 
 #include "push_swap.h"
 
-void sort_3_element_list(t_stack **lst)
+void sort_3_element_list(t_stack **lst, t_stack **sorted_lst )
 {
 	t_stack	*temp;
 	temp = *lst;
 
-	ra_rb_rotate(lst, 'a');
-	//sa_sb_swap(lst, 'a');
+	if (temp[0].index == 1 &&  temp[2].index == 0 && temp[4].index == 2)
+		sa_sb_swap(lst, 'a');
+	if (temp[0].index == 2 &&  temp[2].index == 1 && temp[4].index == 0)
+	{
+		sa_sb_swap(lst, 'a');
+		rra_rotate(lst);
+	}
+	if (temp[0].index == 2 &&  temp[2].index == 0 && temp[4].index == 1)
+		ra_rb_rotate(lst, 'a');
+	if (temp[0].index == 0 &&  temp[2].index == 2 && temp[4].index == 1)
+	{
+		sa_sb_swap(lst, 'a');
+		ra_rb_rotate(lst, 'a');
+	}
+	if (temp[0].index == 1 &&  temp[2].index == 2 && temp[4].index == 0)
+		rra_rotate(lst);
 
+	printf("LST[0].content is %i, LST[0].index is %i\n", temp[0].content, temp[0].index);
+	printf("LST[1].content is %i, LST[1].index is %i\n", temp[1].content, temp[1].index);
+	printf("LST[2].content is %i, LST[2].index is %i\n", temp[2].content, temp[2].index);
+	printf("LST[3].content is %i, LST[3].index is %i\n", temp[3].content, temp[3].index);
 }
 
 void random_sort1(t_stack **lst)
@@ -37,7 +55,7 @@ void random_sort2(t_stack **lst)
 	ra_rb_rotate(lst, 'a');
 }
 
-void sort_small(t_stack **lst, int randomvalue)
+void sort_small(t_stack **lst, t_stack **sorted_list, int randomvalue)
 {
 	t_stack	*temp;
 	temp = *lst;
@@ -54,10 +72,13 @@ void sort_small(t_stack **lst, int randomvalue)
 	}
 	if (lst_size >= 3)
 	{
-		if (randomvalue > 1073741823)
-			random_sort1(lst);
-		if (randomvalue < 1073741823)
-			random_sort2(lst);
+		sort_3_element_list(lst, sorted_list);
+
+
+//		if (randomvalue > 1073741823)
+//			random_sort1(lst);
+//		if (randomvalue < 1073741823)
+//			random_sort2(lst);
 	}
 }
 
