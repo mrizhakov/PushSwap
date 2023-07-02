@@ -65,6 +65,9 @@ int		main(int argc, char **argv)
 	}
 
 	normalize_indexes(&stk_a);
+	print_list_with_indexes(&stk_a);
+
+
 
 
 //

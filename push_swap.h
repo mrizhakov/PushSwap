@@ -76,6 +76,8 @@ void    pb_push(t_stack **head_src, t_stack **head_dest);
 void    pa_push(t_stack **head_src, t_stack **head_dest);
 
 void normalize_indexes(t_stack **head);
+void print_list_with_indexes(t_stack **head);
+
 
 
 
