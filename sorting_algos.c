@@ -12,32 +12,106 @@
 
 #include "push_swap.h"
 
-void sort_3_element_list(t_stack **lst, t_stack **sorted_lst )
+void sort_2_element_list(t_stack **lst, int flag)
+{
+	sa_sb_swap(lst, flag);
+}
+
+void sort_3_element_list(t_stack **stk_a, t_stack **sorted_lst)
 {
 	t_stack	*temp;
-	temp = *lst;
+	temp = *stk_a;
 
 	if (temp[0].index == 1 &&  temp[2].index == 0 && temp[4].index == 2)
-		sa_sb_swap(lst, 'a');
+		sa_sb_swap(stk_a, 'a');
 	if (temp[0].index == 2 &&  temp[2].index == 1 && temp[4].index == 0)
 	{
-		sa_sb_swap(lst, 'a');
-		rra_rotate(lst);
+		sa_sb_swap(stk_a, 'a');
+		rra_rotate(stk_a);
 	}
 	if (temp[0].index == 2 &&  temp[2].index == 0 && temp[4].index == 1)
-		ra_rb_rotate(lst, 'a');
+		ra_rb_rotate(stk_a, 'a');
 	if (temp[0].index == 0 &&  temp[2].index == 2 && temp[4].index == 1)
 	{
-		sa_sb_swap(lst, 'a');
-		ra_rb_rotate(lst, 'a');
+		sa_sb_swap(stk_a, 'a');
+		ra_rb_rotate(stk_a, 'a');
 	}
 	if (temp[0].index == 1 &&  temp[2].index == 2 && temp[4].index == 0)
-		rra_rotate(lst);
+		rra_rotate(stk_a);
 
-	printf("LST[0].content is %i, LST[0].index is %i\n", temp[0].content, temp[0].index);
-	printf("LST[1].content is %i, LST[1].index is %i\n", temp[1].content, temp[1].index);
-	printf("LST[2].content is %i, LST[2].index is %i\n", temp[2].content, temp[2].index);
-	printf("LST[3].content is %i, LST[3].index is %i\n", temp[3].content, temp[3].index);
+//	printf("LST[0].content is %i, LST[0].index is %i\n", temp[0].content, temp[0].index);
+//	printf("LST[1].content is %i, LST[1].index is %i\n", temp[1].content, temp[1].index);
+//	printf("LST[2].content is %i, LST[2].index is %i\n", temp[2].content, temp[2].index);
+//	printf("LST[3].content is %i, LST[3].index is %i\n", temp[3].content, temp[3].index);
+//	printf("LST[4].content is %i, LST[4].index is %i\n", temp[4].content, temp[4].index);
+//	printf("LST[5].content is %i, LST[5].index is %i\n", temp[5].content, temp[5].index);
+//	printf("LST[6].content is %i, LST[6].index is %i\n", temp[6].content, temp[6].index);
+//	printf("LST[7].content is %i, LST[7].index is %i\n", temp[7].content, temp[7].index);
+}
+
+
+void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst )
+{
+	t_stack	*temp1;
+	temp1 = *stk_a;
+	t_stack	*temp2;
+	temp2 = *stk_a;
+
+
+	pb_push(stk_a,stk_b);
+	pb_push(stk_a,stk_b);
+
+
+
+	sort_3_element_list(stk_a, sorted_lst);
+	if (is_sorted(stk_b) == 1)
+		sa_sb_swap(stk_b, 'b');
+
+
+//	if (stk_b[0]->index  stk_b[0]->index && stk_b[0]->index > stk_b[0]->index)
+//		rra_rotate(stk_a);
+//	if (stk_a[0]->index < stk_b[0]->index &&  stk_a[4]->index > stk_b[0]->index)
+//		rra_rotate(stk_a);
+
+//		if (temp[0].index == 1 &&  temp[2].index == 0 && temp[4].index == 2)
+//			sa_sb_swap(stk_a, 'a');
+
+
+	printf("Stk a is \n");
+	print_list(*stk_a);
+	printf("Stk b is \n");
+
+	print_list(*stk_b);
+	exit (1);
+//	pa_push(stk_b,stk_a);
+//	printf("Stk a is \n");
+//	print_list(*stk_a);
+//	printf("Stk b is \n");
+//
+//	print_list(*stk_b);
+//
+//	ra_rb_rotate(stk_a, 'a');
+//	printf("Stk a is \n");
+//	print_list(*stk_a);
+//	printf("Stk b is \n");
+//
+//	print_list(*stk_b);
+//
+//	pa_push(stk_b,stk_a);
+//	printf("Stk a is \n");
+//	print_list(*stk_a);
+//	printf("Stk b is \n");
+//	print_list(*stk_b);
+//
+//	ra_rb_rotate(stk_a, 'a');
+//	printf("Stk a is \n");
+//	print_list(*stk_a);
+//	printf("Stk b is \n");
+//
+//	print_list(*stk_b);
+
+
+
 }
 
 void random_sort1(t_stack **lst)
@@ -55,7 +129,7 @@ void random_sort2(t_stack **lst)
 	ra_rb_rotate(lst, 'a');
 }
 
-void sort_small(t_stack **lst, t_stack **sorted_list, int randomvalue)
+void sort_small(t_stack **lst, t_stack **stk_b, t_stack **sorted_list, int randomvalue)
 {
 	t_stack	*temp;
 	temp = *lst;
@@ -68,11 +142,23 @@ void sort_small(t_stack **lst, t_stack **sorted_list, int randomvalue)
 		return ;
 	if (lst_size == 2)
 	{
-			sa_sb_swap(lst, 'a');
+		sort_2_element_list(lst, 'a');
+//
+//		sa_sb_swap(lst, 'a');
 	}
-	if (lst_size >= 3)
+	if (lst_size == 3)
 	{
 		sort_3_element_list(lst, sorted_list);
+
+
+//		if (randomvalue > 1073741823)
+//			random_sort1(lst);
+//		if (randomvalue < 1073741823)
+//			random_sort2(lst);
+	}
+	if (lst_size == 5)
+	{
+		sort_5_element_list(lst, stk_b, sorted_list);
 
 
 //		if (randomvalue > 1073741823)
@@ -103,49 +189,6 @@ void sort_small(t_stack **lst, t_stack **sorted_list, int randomvalue)
 //
 //
 //
-//}
-
-
-int is_sorted(t_stack **lst, t_stack **sorted_list)
-{
-	t_stack *temp1;
-	t_stack *temp2;
-
-	temp1 = *lst;
-	temp2 = *sorted_list;
-	if (ft_lstsize(temp1) != ft_lstsize(temp2))
-		return (0);
-
-	while (temp1 != NULL && temp2 != NULL)
-	{
-		if (temp1->content != temp2->content)
-		{
-//			printf("List isnt sorted\n");
-
-			return (0);
-		}
-//		printf("Lst node content is:%d\n", temp1->content);
-//		printf("Sorted list node content is:%d\n", temp1->content);
-
-		temp1 = temp1->next;
-		temp2 = temp2->next;
-	}
-	return (1);
-}
-
-//void copy_linked_list(t_stack **lst, t_stack **copy_lst)
-//{
-//	t_stack *temp1;
-//	t_stack *temp2;
-//
-//	temp1 = *lst;
-//	temp2 = *copy_lst;
-//
-//	while (lst != NULL)
-//	{
-//		temp2->content = temp2->content;
-//		temp1 = temp1->next;
-//	}
 //}
 
 t_stack* copy_list(t_stack* head)
@@ -189,3 +232,51 @@ t_stack* copy_list(t_stack* head)
 
 	return new_head;
 }
+
+int is_sorted(t_stack **lst)
+{
+	t_stack *temp1;
+	t_stack *temp2;
+
+	t_stack *sorted_list;
+
+	temp1 = *lst;
+	temp2 = sorted_list;
+	temp2 = copy_list(temp1);
+	bubble_sort(&temp2);
+
+	if (ft_lstsize(temp1) != ft_lstsize(temp2))
+		return (0);
+
+	while (temp1 != NULL && temp2 != NULL)
+	{
+		if (temp1->content != temp2->content)
+		{
+//			printf("List isnt sorted\n");
+
+			return (0);
+		}
+//		printf("Lst node content is:%d\n", temp1->content);
+//		printf("Sorted list node content is:%d\n", temp1->content);
+
+		temp1 = temp1->next;
+		temp2 = temp2->next;
+	}
+	return (1);
+}
+
+//void copy_linked_list(t_stack **lst, t_stack **copy_lst)
+//{
+//	t_stack *temp1;
+//	t_stack *temp2;
+//
+//	temp1 = *lst;
+//	temp2 = *copy_lst;
+//
+//	while (lst != NULL)
+//	{
+//		temp2->content = temp2->content;
+//		temp1 = temp1->next;
+//	}
+//}
+

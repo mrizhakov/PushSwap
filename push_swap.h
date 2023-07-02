@@ -77,8 +77,12 @@ void    pa_push(t_stack **head_src, t_stack **head_dest);
 
 void normalize_indexes(t_stack **head);
 void print_list_with_indexes(t_stack **head);
-void sort_small(t_stack **head, t_stack **sorted_list, int randomvalue);
-int is_sorted(t_stack **lst, t_stack **sorted_list);
+void sort_small(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_list, int randomvalue);
+void sort_2_element_list(t_stack **lst, int flag);
+void sort_3_element_list(t_stack **stk_a, t_stack **sorted_lst);
+void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst);
+
+int is_sorted(t_stack **lst);
 void copy_linked_list(t_stack **lst, t_stack **copy_lst);
 t_stack* copy_list(t_stack* head);
 void random_sort1(t_stack **lst);
