@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <time.h>
+
+
 
 int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
@@ -57,15 +60,77 @@ int		main(int argc, char **argv)
 	stk_a = NULL;
 	t_stack *stk_b;
 	stk_b = NULL;
+	t_stack *stk_sorted;
+	stk_sorted = NULL;
+
 
 	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
 	{
-		printf("yeahhh! error handling is working");
+		printf("Error. yeahhh! error handling is working");
 		return (1);
 	}
 
+//	copy_linked_list(&stk_a, &stk_sorted);
+//
+//
+//	stk_sorted = stk_a;
 	normalize_indexes(&stk_a);
-	print_list_with_indexes(&stk_a);
+	stk_sorted = copy_list(stk_a);
+	bubble_sort(&stk_sorted);
+	normalize_indexes(&stk_sorted);
+
+
+//	print_list(stk_sorted);;
+
+
+//	while (is_sorted(&stk_a, &stk_sorted) == 1)
+//	{
+//		printf("Sorted!");
+//		return 0;
+//	}
+
+
+//	sort_small(&stk_a);
+
+
+	srand(time(NULL));   // Initialization, should only be called once.
+	int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
+
+	printf("RAND_MAX is %i", RAND_MAX);
+	while (is_sorted(&stk_a, &stk_sorted) != 1)
+	{
+		srand(time(NULL));   // Initialization, should only be called once.
+		int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
+
+		sort_small(&stk_a, randomsort_switch);
+		printf("\nStack A is: \n");
+
+		print_list(stk_a);
+		//printf("\nSorted stack is: \n");
+
+//		print_list(stk_sorted);
+
+	}
+	//printf("Sorted!");
+
+//	print_list_with_indexes(&stk_a);
+//	//stk_sorted = bubble_sort(&stk_a);
+//	//sort_small(&stk_a);
+//
+//	printf("\nStack A is: \n");
+//	print_list(stk_a);
+//	printf("\nStack B is: \n");
+//	print_list(stk_b);
+//	printf("\nSorted stack is : \n");
+//	print_list(stk_sorted);
+
+	free_list(stk_sorted);
+	free_list(stk_a);
+	free_list(stk_b);
+	return (0);
+}
+
+
 
 
 
@@ -336,8 +401,5 @@ int		main(int argc, char **argv)
 ////	printf("\nStack B is: \n");
 ////	print_list(stk_b);
 
-	free_list(stk_a);
-	free_list(stk_b);
 
-	return (0);
-}
+

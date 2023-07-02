@@ -53,8 +53,14 @@ void	ft_sort_int_tab_og(int *tab, int size)
 
 void swap_nodes(t_stack *node1, t_stack *node2) {
 	int temp = node1->content;
+	int temp2 = node1->index;
+
 	node1->content = node2->content;
+	node1->index = node2->index;
+
 	node2->content = temp;
+	node2->index = temp2;
+
 }
 
 void bubble_sort(t_stack **head) {

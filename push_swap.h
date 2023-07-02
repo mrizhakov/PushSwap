@@ -77,6 +77,18 @@ void    pa_push(t_stack **head_src, t_stack **head_dest);
 
 void normalize_indexes(t_stack **head);
 void print_list_with_indexes(t_stack **head);
+void sort_small(t_stack **head, int randomvalue);
+int is_sorted(t_stack **lst, t_stack **sorted_list);
+void copy_linked_list(t_stack **lst, t_stack **copy_lst);
+t_stack* copy_list(t_stack* head);
+void random_sort1(t_stack **lst);
+void random_sort2(t_stack **lst);
+
+
+
+
+
+
 
 
 
