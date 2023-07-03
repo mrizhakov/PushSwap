@@ -17,34 +17,40 @@ void sort_2_element_list(t_stack **lst, int flag)
 	sa_sb_swap(lst, flag);
 }
 
-void sort_3_element_list(t_stack **stk_a, t_stack **sorted_lst)
+void sort_3_element_list(t_stack **stk_a)
 {
 	t_stack	*temp;
 	temp = *stk_a;
 
-	if (temp->index == 0)
+	normalize_local_indexes(&temp);
+
+
+	if (temp->local_index == 0)
 	{
 		sa_sb_swap(stk_a, 'a');
 		ra_rb_rotate(stk_a, 'a');
+		return ;
 	}
-	if (temp->index == 1)
+	if (temp->local_index == 1)
 	{
 		temp = temp->next;
-		if (temp->index == 0)
+		if (temp->local_index == 0)
 			sa_sb_swap(stk_a, 'a');
-		if (temp->index == 2)
+		if (temp->local_index == 2)
 			rra_rotate(stk_a);
+		return ;
 	}
-	if (temp->index == 2)
+	if (temp->local_index == 2)
 	{
 		temp = temp->next;
-		if (temp->index == 0)
+		if (temp->local_index == 0)
 			ra_rb_rotate(stk_a, 'a');
-		if (temp->index == 1)
+		if (temp->local_index == 1)
 		{
 			sa_sb_swap(stk_a, 'a');
 			rra_rotate(stk_a);
 		}
+		return ;
 	}
 
 
@@ -81,19 +87,90 @@ void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst 
 	t_stack	*temp1;
 	temp1 = *stk_a;
 	t_stack	*temp2;
-	temp2 = *stk_a;
+	temp2 = *stk_b;
+
+
+	while (temp1 != NULL)
+	{
+		if (temp1->index == 0)
+		{
+			pb_push(&temp1,&temp2);
+			break ;
+		}
+		ra_rb_rotate(&temp1, 'a');
+//		temp1 = temp1->next;
+	}
+	printf("\nAfter finding and pushing smallest element to B \n");
+
+	printf("\nStk a is \n");
+	print_list(temp1);
+	printf("\nStk b is \n");
+	print_list(temp2);
+	while (temp1 != NULL)
+	{
+		if (temp1->index == 1)
+		{
+			pb_push(&temp1,&temp2);
+			break;
+		}
+		ra_rb_rotate(&temp1, 'a');
+//		temp1 = temp1->next;
+	}
+	printf("\nAfter finding and pushing next smallest element to B \n");
+	printf("\nStk a is \n");
+	print_list(temp1);
+	printf("\nStk b is \n");
+	print_list(temp2);
+	printf("\nSort3 on stack A \n");
+	normalize_local_indexes(&temp1);
+
+
+	sort_3_element_list(&temp1);
+	printf("\nStk a is \n");
+	print_list(temp1);
+	printf("\nStk b is \n");
+	print_list(temp2);
+
+	pa_push(&temp2,&temp1);
+	pa_push(&temp2,&temp1);
 
 
 
 
-	pb_push(stk_a,stk_b);
-	pb_push(stk_a,stk_b);
+	//temp1 = *stk_a;
+	printf("\nPushing 2 elements from stack B to A \n");
+
+	printf("\nStk a is \n");
+	print_list(temp1);
+	printf("\nStk b is \n");
+	print_list(temp2);
+
+	exit (1);
 
 
+	while (temp1->next != NULL)
+	{
+		if (temp1->index == 1)
+			break ;
+		temp1 = temp1->next;
+	}
+	print_list(temp1);
 
-	sort_3_element_list(stk_a, sorted_lst);
-	if (is_sorted(stk_b) == 1)
-		sa_sb_swap(stk_b, 'b');
+	printf("Node content is %i\n", temp1->content);
+//
+//	while (temp1->index != 1)
+//		temp1 = temp1->next;
+
+
+	pb_push(&temp1,&temp2);
+
+	sort_3_element_list(&temp1);
+
+	pa_push(stk_b,stk_a);
+	pa_push(stk_b,stk_a);
+
+//	if (is_sorted(stk_b) == 1)
+//		sa_sb_swap(stk_b, 'b');
 
 
 //	if (stk_b[0]->index  stk_b[0]->index && stk_b[0]->index > stk_b[0]->index)
@@ -176,7 +253,7 @@ void sort_small(t_stack **lst, t_stack **stk_b, t_stack **sorted_list, int rando
 	}
 	if (lst_size == 3)
 	{
-		sort_3_element_list(lst, sorted_list);
+		sort_3_element_list(lst);
 
 
 //		if (randomvalue > 1073741823)

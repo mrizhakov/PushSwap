@@ -130,6 +130,43 @@ void normalize_indexes(t_stack **head)
 	free (sorted_list);
 }
 
+
+void normalize_local_indexes(t_stack **head)
+{
+	if (*head == NULL)
+		return; // List is empty or has only one node, no sorting needed
+
+	t_stack *temp;
+	int y = 0;
+	int lst_size;
+	lst_size = ft_lstsize(*head);
+	int *sorted_list = malloc(sizeof(int)* lst_size);
+	while(y != lst_size)
+	{
+		temp = *head;
+		sorted_list[y] = INT_MAX;
+		while (temp != NULL)
+		{
+			if (y == 0)
+			{
+				if (temp->content <= sorted_list[y])
+				{
+					sorted_list[y] = temp->content;
+					temp->local_index = y;
+				}
+			}
+			if ((temp->content <= sorted_list[y]) && (temp->content > sorted_list[y-1]) )
+			{
+				sorted_list[y] = temp->content;
+				temp->local_index = y;
+			}
+			temp = temp->next;
+		}
+		y++;
+	}
+	free (sorted_list);
+}
+
 void print_list_with_indexes(t_stack **head)
 {
 	t_stack *temp;

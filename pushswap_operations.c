@@ -120,9 +120,12 @@ void pb_push(t_stack **head_src, t_stack **head_dest)
 	t_stack *tmp;
 
 	tmp = *head_src; //copy the head of source to tmp
+
 	if (*head_src == NULL)
 		return ;
+
 	ft_putstr_fd("pb\n", 1);
+
 	*head_src = (*head_src)->next;  //point the head of source one element down
 	tmp->next = *head_dest; //point the next of temp to destination
 	*head_dest = tmp; //update the head of destination to start with tmp
