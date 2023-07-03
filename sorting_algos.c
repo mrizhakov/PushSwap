@@ -22,23 +22,49 @@ void sort_3_element_list(t_stack **stk_a, t_stack **sorted_lst)
 	t_stack	*temp;
 	temp = *stk_a;
 
-	if (temp[0].index == 1 &&  temp[2].index == 0 && temp[4].index == 2)
-		sa_sb_swap(stk_a, 'a');
-	if (temp[0].index == 2 &&  temp[2].index == 1 && temp[4].index == 0)
-	{
-		sa_sb_swap(stk_a, 'a');
-		rra_rotate(stk_a);
-	}
-	if (temp[0].index == 2 &&  temp[2].index == 0 && temp[4].index == 1)
-		ra_rb_rotate(stk_a, 'a');
-	if (temp[0].index == 0 &&  temp[2].index == 2 && temp[4].index == 1)
+	if (temp->index == 0)
 	{
 		sa_sb_swap(stk_a, 'a');
 		ra_rb_rotate(stk_a, 'a');
 	}
-	if (temp[0].index == 1 &&  temp[2].index == 2 && temp[4].index == 0)
-		rra_rotate(stk_a);
+	if (temp->index == 1)
+	{
+		temp = temp->next;
+		if (temp->index == 0)
+			sa_sb_swap(stk_a, 'a');
+		if (temp->index == 2)
+			rra_rotate(stk_a);
+	}
+	if (temp->index == 2)
+	{
+		temp = temp->next;
+		if (temp->index == 0)
+			ra_rb_rotate(stk_a, 'a');
+		if (temp->index == 1)
+		{
+			sa_sb_swap(stk_a, 'a');
+			rra_rotate(stk_a);
+		}
+	}
 
+
+//	if (temp[0].index == 1 &&  temp[2].index == 0 && temp[4].index == 2)
+//		sa_sb_swap(stk_a, 'a');
+//	if (temp[0].index == 2 &&  temp[2].index == 1 && temp[4].index == 0)
+//	{
+//		sa_sb_swap(stk_a, 'a');
+//		rra_rotate(stk_a);
+//	}
+//	if (temp[0].index == 2 &&  temp[2].index == 0 && temp[4].index == 1)
+//		ra_rb_rotate(stk_a, 'a');
+//	if (temp[0].index == 0 &&  temp[2].index == 2 && temp[4].index == 1)
+//	{
+//		sa_sb_swap(stk_a, 'a');
+//		ra_rb_rotate(stk_a, 'a');
+//	}
+//	if (temp[0].index == 1 &&  temp[2].index == 2 && temp[4].index == 0)
+//		rra_rotate(stk_a);
+//
 //	printf("LST[0].content is %i, LST[0].index is %i\n", temp[0].content, temp[0].index);
 //	printf("LST[1].content is %i, LST[1].index is %i\n", temp[1].content, temp[1].index);
 //	printf("LST[2].content is %i, LST[2].index is %i\n", temp[2].content, temp[2].index);
@@ -56,6 +82,8 @@ void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst 
 	temp1 = *stk_a;
 	t_stack	*temp2;
 	temp2 = *stk_a;
+
+
 
 
 	pb_push(stk_a,stk_b);

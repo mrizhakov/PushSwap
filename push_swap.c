@@ -139,7 +139,20 @@ int		main(int argc, char **argv)
 		print_list(stk_a);
 		printf("Stk b is \n");
 		print_list(stk_b);
+			printf("LST[0][0]->index %i\n", stk_a[0].content);
+	printf("LST[0][1]->index %i\n", stk_a[1].content);
+	printf("LST[0][2]->index %i\n", stk_a[2].content);
+	printf("LST[0][2]->index %i\n", stk_a[3].content);
+	printf("LST[0][2]->index %i\n", stk_a[4].content);
+	printf("LST[0][2]->index %i\n", stk_a[5].content);
+	printf("LST[0][2]->index %i\n", stk_a[6].content);
+	printf("LST[0][2]->index %i\n", stk_a[7].content);
+	printf("LST[0][2]->index %i\n", stk_a[8].content);
+	printf("LST[0][2]->index %i\n", stk_a[9].content);
+
+
 		printf("Sorted!");
+
 	}
 
 //	print_list_with_indexes(&stk_a);
