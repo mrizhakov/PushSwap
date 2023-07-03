@@ -295,48 +295,76 @@ void sort_small(t_stack **lst, t_stack **stk_b, t_stack **sorted_list, int rando
 //
 //
 //}
-
+//
+//
 t_stack* copy_list(t_stack* head)
 {
 	if (head == NULL)
 		return NULL; // Return NULL for an empty list
 
 	t_stack* new_head = NULL; // Head of the new list
-	t_stack* prev = NULL; // Previous node in the new list
-
-	// Iterate over the original list
-	while (head != NULL) {
-		// Create a new node
-		t_stack* new_node = (t_stack*)malloc(sizeof(t_stack));
-		if (new_node == NULL) {
-			// Error handling for memory allocation failure
-			// Free the memory allocated so far and return NULL
-			while (new_head != NULL) {
-				t_stack* temp = new_head;
-				new_head = new_head->next;
-				free(temp);
-			}
-			return NULL;
-		}
-
-		// Copy the content and index from the original node
-		new_node->content = head->content;
-		new_node->index = head->index;
-		new_node->next = NULL;
-
-		// Update the new list
-		if (prev == NULL) {
-			new_head = new_node;
-		} else {
-			prev->next = new_node;
-		}
-		prev = new_node;
-
+	while (head != NULL)
+	{
+		ft_lstadd_back(&new_head, (ft_lstnew(head->content)));
 		head = head->next;
 	}
-
 	return new_head;
 }
+
+//t_stack     *ft_lstnew(int content);
+//void        ft_lstadd_back(t_stack **lst, t_stack *new);
+
+
+
+
+//
+//t_stack* copy_list(t_stack* head)
+//{
+//	if (head == NULL)
+//		return NULL; // Return NULL for an empty list
+//
+//	t_stack* new_head = NULL; // Head of the new list
+//	t_stack* prev = NULL; // Previous node in the new list
+//
+//	// Iterate over the original list
+//	while (head != NULL)
+//	{
+//		// Create a new node
+//		t_stack* new_node = (t_stack*)malloc(sizeof(t_stack));
+//		if (new_node == NULL)
+//		{
+//			// Error handling for memory allocation failure
+//			// Free the memory allocated so far and return NULL
+//			while (new_head != NULL)
+//			{
+//				t_stack* temp = new_head;
+//				new_head = new_head->next;
+//				free(temp);
+//			}
+//			return NULL;
+//		}
+//
+//		// Copy the content and index from the original node
+//		new_node->content = head->content;
+//		new_node->index = head->index;
+//		new_node->next = NULL;
+//
+//		// Update the new list
+//		if (prev == NULL)
+//		{
+//			new_head = new_node;
+//		}
+//		else
+//		{
+//			prev->next = new_node;
+//		}
+//		prev = new_node;
+//		//free_list(new_node);
+//
+//		head = head->next;
+//	}
+//	return new_head;
+//}
 
 int is_sorted(t_stack **lst)
 {
