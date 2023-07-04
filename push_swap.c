@@ -66,14 +66,19 @@ int		main(int argc, char **argv)
 	}
 	normalize_indexes(&stk_a);
 
-	printf("Le stack originale e:\n");
-	print_list(stk_a);
+//	printf("Le stack originale e:\n");
+//	print_list(stk_a);
 	while (is_sorted(&stk_a) == 0)
 	{
 		srand(time(NULL));   // Initialization, should only be called once.
 		int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
 		sort_small(&stk_a, &stk_b, &stk_sorted, randomsort_switch);
+		printf("\nStk a is \n");
+		print_list(stk_a);
+		printf("\nStk b is \n");
+		print_list(stk_b);
 	}
+
 	if (is_sorted(&stk_a) == 1)
 	{
 		printf("\nStk a is \n");

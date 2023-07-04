@@ -128,13 +128,15 @@ void free_list(t_stack* head) {
 void print_list(t_stack *head)
 {
 	ft_putstr_fd("Value   Index   Local index\n", 1);
+	t_stack *temp;
+	temp = head;
 
-	while (head != NULL)
+	while (temp!= NULL)
 	{
-		printf("%d         ", head->content);
-		printf("%d         ", head->index);
-		printf("%d\n", head->local_index);
-		head = head->next;
+		printf("%d         ", temp->content);
+		printf("%d         ", temp->index);
+		printf("%d\n", temp->local_index);
+		temp = temp->next;
 	}
 }
 

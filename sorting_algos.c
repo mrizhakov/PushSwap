@@ -21,9 +21,9 @@ void sort_3_element_list(t_stack **stk_a) {
 	t_stack *temp;
 	temp = *stk_a;
 	normalize_local_indexes(&temp);
-	printf("\nAfter doing normalize_local_indexes Stk a is \n");
-	printf("\nStk a is \n");
-	print_list(temp);
+//	printf("\nAfter doing normalize_local_indexes Stk a is \n");
+//	printf("\nStk a is \n");
+//	print_list(temp);
 	if (temp->local_index == 0) {
 		sa_sb_swap(stk_a, 'a');
 		ra_rb_rotate(stk_a, 'a');
@@ -52,19 +52,16 @@ void sort_3_element_list(t_stack **stk_a) {
 	}
 }
 
-void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst )
-{
-	t_stack	*temp1;
+void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst ) {
+	t_stack *temp1;
 	temp1 = *stk_a;
-	t_stack	*temp2;
+	t_stack *temp2;
 	temp2 = *stk_b;
 
-	while (temp1 != NULL)
-	{
-		if (temp1->index == 0)
-		{
-			pb_push(&temp1,&temp2);
-			break ;
+	while (temp1 != NULL) {
+		if (temp1->index == 0) {
+			pb_push(&temp1, &temp2);
+			break;
 		}
 		ra_rb_rotate(&temp1, 'a');
 //		temp1 = temp1->next;
@@ -75,41 +72,63 @@ void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst 
 	print_list(temp1);
 	printf("\nStk b is \n");
 	print_list(temp2);
-	while (temp1 != NULL)
-	{
-		if (temp1->index == 1)
-		{
-			pb_push(&temp1,&temp2);
-			break ;
+	while (temp1 != NULL) {
+		if (temp1->index == 1) {
+			pb_push(&temp1, &temp2);
+			break;
 		}
 		ra_rb_rotate(&temp1, 'a');
 //		temp1 = temp1->next;
 	}
-	printf("\nAfter finding and pushing next smallest element to B \n");
+	printf("\nAfter two pushes to B \n");
+
 	printf("\nStk a is \n");
 	print_list(temp1);
 	printf("\nStk b is \n");
 	print_list(temp2);
-	printf("\nSort3 on stack A \n");
+
+//	printf("\nAfter finding and pushing next smallest element to B \n");
+//	printf("\nStk a is \n");
+//	print_list(temp1);
+//	printf("\nStk b is \n");
+//	print_list(temp2);
+//	printf("\nSort3 on stack A \n");
 	//normalize_local_indexes(&temp1);
+	if (is_sorted(&temp1) == 0)
+		sort_3_element_list(&temp1);
 
+	printf("\nAfter is_sorted and sort3 \n");
 
-	sort_3_element_list(&temp1);
 	printf("\nStk a is \n");
 	print_list(temp1);
 	printf("\nStk b is \n");
 	print_list(temp2);
 
-	pa_push(&temp2,&temp1);
-	pa_push(&temp2,&temp1);
 
+//	printf("\nStk a is \n");
+//	print_list(temp1);
+//	printf("\nStk b is \n");
+//	print_list(temp2);
+
+	pa_push(&temp2, &temp1);
+	pa_push(&temp2, &temp1);
+	printf("\nAfter two pushes back to A \n");
+
+	printf("\nStk a is \n");
+	print_list(temp1);
+	printf("\nStk b is \n");
+	print_list(temp2);
+
+	*stk_a = temp1;
+	*stk_b = temp2;
+}
 	//temp1 = *stk_a;
-	printf("\nPushing 2 elements from stack B to A \n");
-
-	printf("\nStk a is \n");
-	print_list(temp1);
-	printf("\nStk b is \n");
-	print_list(temp2);
+//	printf("\nPushing 2 elements from stack B to A \n");
+//
+//	printf("\nStk a is \n");
+//	print_list(temp1);
+//	printf("\nStk b is \n");
+//	print_list(temp2);
 
 //	exit (1);
 
@@ -181,9 +200,6 @@ void sort_5_element_list(t_stack **stk_a, t_stack **stk_b, t_stack **sorted_lst 
 //
 //	print_list(*stk_b);
 
-
-
-}
 
 void random_sort1(t_stack **lst)
 {
@@ -264,13 +280,13 @@ int is_sorted(t_stack **lst)
 	{
 		if (temp1->content > temp1->next->content)
 		{
-			printf("\nIs sorted says that stack is not sorted, stack is : \n");
-			print_list(temp1);
+//			printf("\nIs sorted says that stack is not sorted, stack is : \n");
+//			print_list(temp1);
 			return (0);
 		}
 		temp1 = temp1->next;
 	}
-	printf("\nIs sorted says that stack is sorted, stack is : \n");
-	print_list(temp1);
+//	printf("\nIs sorted says that stack is sorted, stack is : \n");
+//	print_list(temp1);
 	return (1);
 }
