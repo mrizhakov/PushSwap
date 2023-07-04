@@ -89,28 +89,7 @@ void copy_linked_list(t_stack **lst, t_stack **copy_lst);
 t_stack* copy_list(t_stack* head);
 void random_sort1(t_stack **lst);
 void random_sort2(t_stack **lst);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void free_list2(t_stack** head);
 
 
 #endif //PUSH_SWAP_H

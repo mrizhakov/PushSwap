@@ -12,62 +12,6 @@
 
 #include "push_swap.h"
 
-//old sa_swap - can use any indexes
-
-/*
-t_stack *sa_swap(t_stack **head, int index1, int index2)
-{
-	if (head == NULL || index1 == index2) {
-		return *head;
-	}
-
-	t_stack *prev1 = NULL, *prev2 = NULL, *curr = *head;
-	t_stack *node1 = NULL, *node2 = NULL, *tempNode = NULL;
-	int i = 0;
-
-	// Traverse the list to find the nodes at index1 and index2
-	while (curr) {
-		if (i == index1) {
-			node1 = curr;
-			prev1 = tempNode;
-		}
-		if (i == index2) {
-			node2 = curr;
-			prev2 = tempNode;
-		}
-		tempNode = curr;
-		curr = curr->next;
-		i++;
-	}
-
-	// If either node1 or node2 is not found
-	if (!node1 || !node2) {
-		return *head;
-	}
-
-	// Update the links to swap the nodes
-	if (prev1) {
-		prev1->next = node2;
-	} else {
-		head = &node2;
-	}
-
-	if (prev2) {
-		prev2->next = node1;
-	} else {
-		head = &node1;
-	}
-
-	tempNode = node1->next;
-	node1->next = node2->next;
-	node2->next = tempNode;
-	ft_putstr_fd("\nsa\n", 1);
-
-	return *head;
-}
-*/
-
-
 void sa_sb_swap(t_stack **head, char flag)
 {
 	t_stack *original_stack;
@@ -165,7 +109,6 @@ t_stack *pop_tail(t_stack **lst)
 	last_node->next = NULL;
 	return (last_node);
 }
-//The first element becomes the last one.
 
 void	ra_rb_rotate(t_stack **lst, char flag)
 {

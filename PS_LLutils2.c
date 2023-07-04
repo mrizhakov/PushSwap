@@ -29,6 +29,28 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (temp);
 }
 
+void	ft_lstdelone(t_stack *lst, void (*del)(void *))
+{
+	if (!del)
+		return ;
+	del((void *)(lst->content));
+	free(lst);
+}
+
+void	ft_lstclear(t_stack **lst, void (*del)(void *))
+{
+	t_stack	*temp;
+
+	if (!del)
+		return ;
+	while (lst && *lst)
+	{
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+}
+
 t_stack	*ft_lstnew(int content)
 {
 	t_stack	*new_node;
@@ -79,29 +101,39 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	temp->next = new;
 }
 
-void free_list(t_stack *head)
-{
-	// printf("the correct answer is : \n");
-	t_stack *tmp;
+void free_list2(t_stack** head) {
+	t_stack* current;
+	current = *head;
+	t_stack* next;
 
-	while (head != NULL) {
-		tmp = head->next;
-		free(head);
-		head = tmp;
+	while (current != NULL) {
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*head = current;
+}
+
+void free_list(t_stack* head) {
+	t_stack* current = head;
+	t_stack* next;
+
+	while (current != NULL) {
+		next = current->next;
+		free(current);
+		current = next;
 	}
 }
 
 void print_list(t_stack *head)
 {
-	ft_putstr_fd("Value   Index\n", 1);
+	ft_putstr_fd("Value   Index   Local index\n", 1);
 
 	while (head != NULL)
 	{
-//		ft_putstr_fd("Value   Index\n", 1);
-
 		printf("%d         ", head->content);
-		printf("%d\n", head->index);
-
+		printf("%d         ", head->index);
+		printf("%d\n", head->local_index);
 		head = head->next;
 	}
 }

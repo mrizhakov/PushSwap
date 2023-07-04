@@ -23,34 +23,6 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-void	ft_sort_int_tab_og(int *tab, int size)
-{
-	int	counter;
-	int	storage;
-	int	step;
-
-	counter = 0;
-	step = 0;
-	while (counter < size && step < size)
-	{
-		while (step <= size)
-		{
-			while (counter + 1 < size)
-			{
-				if (tab[counter + 1] < tab[counter])
-				{
-					storage = tab[counter];
-					tab[counter] = tab[counter + 1];
-					tab[counter + 1] = storage;
-				}
-				counter++;
-			}
-			counter = 0;
-			step++;
-		}
-	}
-}
-
 void swap_nodes(t_stack *node1, t_stack *node2) {
 	int temp = node1->content;
 	int temp2 = node1->index;
@@ -89,9 +61,6 @@ void bubble_sort(t_stack **head) {
 }
 //function to assign normalized indexes
 //currently only finds the min value of the list
-
-
-
 //my version which works sorts only negative numbers
 
 void normalize_indexes(t_stack **head)
@@ -103,7 +72,7 @@ void normalize_indexes(t_stack **head)
 	int y = 0;
 	int lst_size;
 	lst_size = ft_lstsize(*head);
-	int *sorted_list = malloc(sizeof(int)* lst_size);
+	int *sorted_list = (int *)malloc(sizeof(int)* lst_size);
 	while(y != lst_size)
 	{
 		temp = *head;
@@ -118,10 +87,12 @@ void normalize_indexes(t_stack **head)
 					temp->index = y;
 				}
 			}
-			if ((temp->content <= sorted_list[y]) && (temp->content > sorted_list[y-1]) )
+			if (y>0)
 			{
-				sorted_list[y] = temp->content;
-				temp->index = y;
+				if ((temp->content <= sorted_list[y]) && (temp->content > sorted_list[y - 1])) {
+					sorted_list[y] = temp->content;
+					temp->index = y;
+				}
 			}
 			temp = temp->next;
 		}
@@ -129,7 +100,6 @@ void normalize_indexes(t_stack **head)
 	}
 	free (sorted_list);
 }
-
 
 void normalize_local_indexes(t_stack **head)
 {
@@ -155,29 +125,18 @@ void normalize_local_indexes(t_stack **head)
 					temp->local_index = y;
 				}
 			}
-			if ((temp->content <= sorted_list[y]) && (temp->content > sorted_list[y-1]) )
+			if (y>0)
 			{
-				sorted_list[y] = temp->content;
-				temp->local_index = y;
+				if ((temp->content <= sorted_list[y]) && (temp->content > sorted_list[y - 1])) {
+					sorted_list[y] = temp->content;
+					temp->local_index = y;
+				}
 			}
 			temp = temp->next;
 		}
 		y++;
 	}
 	free (sorted_list);
-}
-
-void print_list_with_indexes(t_stack **head)
-{
-	t_stack *temp;
-
-	temp = *head;
-	while (temp != NULL)
-	{
-		printf("Node values is: %d, normalized value (index) is %d\n", temp->content, temp->index);
-		temp = temp->next;
-	}
-	temp = *head;
 }
 
 //old version of normalize indexes which kind of works for first element only maybe also for the second one
@@ -227,10 +186,6 @@ void normalize_indexes(t_stack **head)
 	printf("Minimum value is : %d\n", min[3]);
 	printf("Minimum value is : %d\n", min[4]);
 	printf("Minimum value is : %d\n", min[5]);
-
-
-
-
 	printf("Index is : %d\n", i);
 }
 **/
