@@ -122,6 +122,60 @@ void sort_5_element_list(t_stack **stk_a, t_stack **stk_b)
 	*stk_b = temp2;
 }
 
+int find_median(t_stack **lst)
+{
+	int median;
+
+	median = ft_lstsize(*lst) / 2;
+	return (median);
+}
+
+
+void sort_big(t_stack **stk_a, t_stack **stk_b)
+{
+	printf("Big sort!");
+	t_stack *temp_a;
+	t_stack *temp_b;
+	int median;
+	normalize_indexes(stk_a);
+	temp_a = *stk_a;
+	temp_b = *stk_b;
+
+	median = find_median(&temp_a);
+	printf("\nMedian is %d \n", median);
+	printf("\nStarting list is\n");
+
+	printf("\nStk a is \n");
+	print_list(temp_a);
+	printf("\nStk b is \n");
+	print_list(temp_b);
+
+	while (temp_a->index != ft_lstsize(temp_a))
+	{
+		if (temp_a->index < median) {
+			pb_push(&temp_a, &temp_b);
+		}
+		if (temp_a->index >= median)
+		{
+			printf("Skip element\n");
+			ra_rb_rotate(&temp_a, 'a');
+		}
+//		printf("\nPushing all values smaller than median to Stk B\n");
+//		printf("\nStk a is \n");
+//		print_list(temp_a);
+//		printf("\nStk b is \n");
+//		print_list(temp_b);
+	}
+	printf("\nPushing all values smaller than median to Stk B\n");
+	printf("\nStk a is \n");
+	print_list(temp_a);
+	printf("\nStk b is \n");
+	print_list(temp_b);
+	exit (1);
+}
+
+
+
 void random_sort1(t_stack **lst)
 {
 	t_stack	*temp;
@@ -137,7 +191,7 @@ void random_sort2(t_stack **lst)
 	ra_rb_rotate(lst, 'a');
 }
 
-void sort_small(t_stack **lst, t_stack **stk_b, int randomvalue)
+void sorting_algos(t_stack **lst, t_stack **stk_b, int randomvalue)
 {
 	t_stack	*temp;
 	temp = *lst;
@@ -165,6 +219,16 @@ void sort_small(t_stack **lst, t_stack **stk_b, int randomvalue)
 	if (lst_size == 5)
 	{
 		sort_5_element_list(lst, stk_b);
+
+//		if (randomvalue > 1073741823)
+//			random_sort1(lst);
+//		if (randomvalue < 1073741823)
+//			random_sort2(lst);
+	}
+
+	if (lst_size > 5)
+	{
+		sort_big(lst, stk_b);
 
 //		if (randomvalue > 1073741823)
 //			random_sort1(lst);
