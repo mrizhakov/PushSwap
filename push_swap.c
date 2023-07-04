@@ -54,8 +54,6 @@ int		main(int argc, char **argv)
 	stk_a = NULL;
 	t_stack *stk_b;
 	stk_b = NULL;
-	t_stack *stk_sorted;
-	stk_sorted = NULL;
 
 	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
 	{
@@ -72,7 +70,7 @@ int		main(int argc, char **argv)
 	{
 		srand(time(NULL));   // Initialization, should only be called once.
 		int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
-		sort_small(&stk_a, &stk_b, &stk_sorted, randomsort_switch);
+		sort_small(&stk_a, &stk_b, randomsort_switch);
 		printf("\nStk a is \n");
 		print_list(stk_a);
 		printf("\nStk b is \n");
@@ -88,7 +86,6 @@ int		main(int argc, char **argv)
 		printf("Sorted!");
 	}
 
-	free_list(stk_sorted);
 	//free_list(stk_a);
 	free_list2(&stk_a);
 	free_list(stk_b);
