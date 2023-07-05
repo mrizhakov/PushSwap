@@ -136,6 +136,7 @@ void normalize_local_indexes(t_stack **head)
 		}
 		y++;
 	}
+//	*head = temp;
 	free (sorted_list);
 }
 

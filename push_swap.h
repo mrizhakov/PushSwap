@@ -92,6 +92,10 @@ t_stack* copy_list(t_stack* head);
 void random_sort1(t_stack **lst);
 void random_sort2(t_stack **lst);
 void free_list2(t_stack** head);
+void push_smallest_to_b(t_stack **stk_a, t_stack **stk_b);
+void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b);
+
+
 
 
 #endif //PUSH_SWAP_H
