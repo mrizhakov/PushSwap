@@ -309,7 +309,7 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
         while (chunk_size != 0 & lst_size != 3)
         {
             push_smallest_to_b(&temp_a, &temp_b);
-            chunk_size--;
+            current_chunk_size--;
             lst_size--;
         }
     }
@@ -394,16 +394,26 @@ void sorting_algos(t_stack **lst, t_stack **stk_b, int randomvalue)
 //			random_sort2(lst);
 	}
 
-	if (lst_size > 10)
+	if (lst_size > 10 && lst_size <= 100)
 	{
-		sort_big(lst, stk_b, 8);
+		sort_big(lst, stk_b, lst_size / 4);
+	}
 
-//		if (randomvalue > 1073741823)
-//			random_sort1(lst);
-//		if (randomvalue < 1073741823)
-//			random_sort2(lst);
+	if (lst_size == 100)
+	{
+		sort_big(lst, stk_b, 25);
+	}
+
+	if (lst_size > 100 && lst_size <= 500)
+	{
+		sort_big(lst, stk_b, 62);
+	}
+	if (lst_size == 500)
+	{
+		sort_big(lst, stk_b, 71);
 	}
 }
+
 
 
 t_stack* copy_list(t_stack* head)
