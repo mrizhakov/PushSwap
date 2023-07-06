@@ -57,18 +57,18 @@ int		main(int argc, char **argv)
 
 	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
 	{
-		printf("Error. yeahhh! error handling is working");
+//		printf("Error. yeahhh! error handling is working");
 		//ft_lstclear(&stk_a, free);
 		free_list(stk_a);
 		return (1);
 	}
 	normalize_indexes(&stk_a);
 
-	printf("Le stack originale e:\n");
-	printf("\nStk a is \n");
-	print_list(stk_a);
-	printf("\nStk b is \n");
-	print_list(stk_b);
+//	printf("Le stack originale e:\n");
+//	printf("\nStk a is \n");
+//	print_list(stk_a);
+//	printf("\nStk b is \n");
+//	print_list(stk_b);
 
 	while (is_sorted(&stk_a) == 0)
 	{
@@ -76,11 +76,11 @@ int		main(int argc, char **argv)
 		int randomsort_switch = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
 		//sort_small(&stk_a, &stk_b, randomsort_switch);
 		sorting_algos(&stk_a, &stk_b, randomsort_switch);
-
-		printf("\nStk a is \n");
-		print_list(stk_a);
-		printf("\nStk b is \n");
-		print_list(stk_b);
+//
+//		printf("\nStk a is \n");
+//		print_list(stk_a);
+//		printf("\nStk b is \n");
+//		print_list(stk_b);
 	}
 
 	if (is_sorted(&stk_a) == 1)
