@@ -300,18 +300,32 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
     temp_b = *stk_b;
 
     lst_size = ft_lstsize(temp_a);
-    int chunk_size = lst_size / chunks;
+    int chunk_size = (lst_size - 3) / chunks;
     int current_chunk_size;
+	int last_chunk_size = (lst_size - 3) % chunks;
 
-    while (lst_size != 3)
+	printf("\nList size is %d \n", lst_size);
+	printf("\nGonna use %d chunks\n", chunks);
+	printf("\nChunk size is %d \n", chunk_size);
+	printf("\nLast chunk is %d long \n", last_chunk_size);
+
+
+
+	//exit (1);
+
+	while (lst_size != 3 && chunks != 0)
     {
-        current_chunk_size = chunk_size;
+        if (chunks == 1)
+			current_chunk_size = last_chunk_size;
+		else if (chunks != 1)
+			current_chunk_size = chunk_size;
         while (chunk_size != 0 & lst_size != 3)
         {
             push_smallest_to_b(&temp_a, &temp_b);
             current_chunk_size--;
             lst_size--;
         }
+		chunks--;
     }
     sort_3_element_list(&temp_a);
     lst_size = ft_lstsize(temp_b);
@@ -331,6 +345,51 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
     *stk_b = temp_b;
 
 }
+
+//
+//void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
+//{
+//	printf("Sort 100!");
+//	t_stack *temp_a;
+//	t_stack *temp_b;
+//	int median;
+//	int operations;
+//	int lst_size;
+//	temp_a = *stk_a;
+//	temp_b = *stk_b;
+//
+//	lst_size = ft_lstsize(temp_a);
+//	int chunk_size = lst_size / chunks;
+//	int current_chunk_size;
+//
+//	while (lst_size != 3)
+//	{
+//		current_chunk_size = chunk_size;
+//		while (chunk_size != 0 & lst_size != 3)
+//		{
+//			push_smallest_to_b(&temp_a, &temp_b);
+//			current_chunk_size--;
+//			lst_size--;
+//		}
+//	}
+//	sort_3_element_list(&temp_a);
+//	lst_size = ft_lstsize(temp_b);
+//	while (lst_size != 0)
+//	{
+//		pa_push(&temp_b, &temp_a);
+//		lst_size--;
+//	}
+//
+//	printf("\nPush smallest to Stk B result is \n");
+//
+//	printf("\nStk a is \n");
+//	print_list(temp_a);
+//	printf("\nStk b is \n");
+//	print_list(temp_b);
+//	*stk_a = temp_a;
+//	*stk_b = temp_b;
+//
+//}
 
 
 
@@ -393,15 +452,37 @@ void sorting_algos(t_stack **lst, t_stack **stk_b, int randomvalue)
 //		if (randomvalue < 1073741823)
 //			random_sort2(lst);
 	}
-
-	if (lst_size > 10 && lst_size <= 100)
+	if (lst_size > 10 && lst_size < 15)
 	{
-		sort_big(lst, stk_b, lst_size / 4);
+		sort_big(lst, stk_b, 3);
+
+//		if (randomvalue > 1073741823)
+//			random_sort1(lst);
+//		if (randomvalue < 1073741823)
+//			random_sort2(lst);
+	}
+	if (lst_size == 15)
+	{
+		sort_big(lst, stk_b, lst_size / 3);
 	}
 
+//	if (lst_size > 10 && lst_size <= 100)
+//	{
+//		sort_big(lst, stk_b, lst_size / 4);
+//	}
+
+	if (lst_size > 15 && lst_size < 100)
+	{
+		sort_big(lst, stk_b, lst_size/4);
+
+//		if (randomvalue > 1073741823)
+//			random_sort1(lst);
+//		if (randomvalue < 1073741823)
+//			random_sort2(lst);
+	}
 	if (lst_size == 100)
 	{
-		sort_big(lst, stk_b, 25);
+		sort_big(lst, stk_b, 4);
 	}
 
 	if (lst_size > 100 && lst_size <= 500)
