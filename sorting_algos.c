@@ -288,207 +288,48 @@ void sort_10(t_stack **stk_a, t_stack **stk_b)
 
 
 
-void sort_big(t_stack **stk_a, t_stack **stk_b)
+void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 {
-	printf("Big sort!");
-	t_stack *temp_a;
-	t_stack *temp_b;
-	int median;
-	int operations;
-	int lst_size;
+    printf("Sort 100!");
+    t_stack *temp_a;
+    t_stack *temp_b;
+    int median;
+    int operations;
+    int lst_size;
+    temp_a = *stk_a;
+    temp_b = *stk_b;
 
-	normalize_indexes(stk_a);
-	normalize_local_indexes(stk_a);
+    lst_size = ft_lstsize(temp_a);
+    int chunk_size = lst_size / chunks;
+    int current_chunk_size;
 
-	temp_a = *stk_a;
-	temp_b = *stk_b;
+    while (lst_size != 3)
+    {
+        current_chunk_size = chunk_size;
+        while (chunk_size != 0 & lst_size != 3)
+        {
+            push_smallest_to_b(&temp_a, &temp_b);
+            chunk_size--;
+            lst_size--;
+        }
+    }
+    sort_3_element_list(&temp_a);
+    lst_size = ft_lstsize(temp_b);
+    while (lst_size != 0)
+    {
+        pa_push(&temp_b, &temp_a);
+        lst_size--;
+    }
 
-	printf("\nStarting list in big sort is\n");
+    printf("\nPush smallest to Stk B result is \n");
 
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-	median = find_median(&temp_a);
-	printf("\nMedian is %d \n", median);
-	printf("\nLstsize is : %d \n", ft_lstsize(temp_a));
-	printf("\nFIRST PASS\n");
+    printf("\nStk a is \n");
+    print_list(temp_a);
+    printf("\nStk b is \n");
+    print_list(temp_b);
+    *stk_a = temp_a;
+    *stk_b = temp_b;
 
-	operations = 0;
-	lst_size = ft_lstsize(temp_a);
-	while (operations != lst_size)
-	{
-		if (temp_a->index < median) {
-			pb_push(&temp_a, &temp_b);
-		}
-		else if (temp_a->index >= median)
-		{
-			printf("Skip element\n");
-			ra_rb_rotate(&temp_a, 'a');
-		}
-		operations++;
-	}
-	printf("\nOperations number is : %d \n", operations);
-
-
-	printf("\nPushing all values smaller than median to Stk B\n");
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-	printf("\nSECOND PASS\n");
-
-	median = find_median(&temp_a);
-	operations = 0;
-	lst_size = ft_lstsize(temp_a);
-	printf("\nMedian is %d \n", median);
-	printf("\nLstsize is : %d \n", ft_lstsize(temp_a));
-
-	while (operations != lst_size)
-	{
-		if (temp_a->index < median) {
-			pb_push(&temp_a, &temp_b);
-		}
-		else if (temp_a->index >= median)
-		{
-			printf("Skip element\n");
-			ra_rb_rotate(&temp_a, 'a');
-		}
-		operations++;
-	}
-	printf("\nOperations number is : %d \n", operations);
-
-
-	printf("\nPushing all values smaller than median to Stk B\n");
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-	printf("\nTHIRD PASS\n");
-
-	median = find_median(&temp_a);
-	operations = 0;
-	lst_size = ft_lstsize(temp_a);
-	printf("\nMedian is %d \n", median);
-	printf("\nLstsize is : %d \n", ft_lstsize(temp_a));
-
-	while (operations != lst_size)
-	{
-		if (temp_a->index < median) {
-			pb_push(&temp_a, &temp_b);
-		}
-		else if (temp_a->index >= median)
-		{
-			printf("Skip element\n");
-			ra_rb_rotate(&temp_a, 'a');
-		}
-		operations++;
-	}
-	printf("\nOperations number is : %d \n", operations);
-
-
-	printf("\nPushing all values smaller than median to Stk B\n");
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-	sort_3_element_list(&temp_a);
-	printf("\nSort three on stack A\n");
-
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-	printf("\nPushing back to A\n");
-
-	printf("\nFIRST PASS\n");
-
-	median = find_median(&temp_b);
-	operations = 0;
-	lst_size = ft_lstsize(temp_b);
-	printf("\nMedian is %d \n", median);
-	printf("\nLstsize is : %d \n", ft_lstsize(temp_b));
-
-	while (operations != lst_size)
-	{
-		if (temp_b->index < median) {
-			pa_push(&temp_b, &temp_a);
-		}
-		else if (temp_b->index >= median)
-		{
-			printf("Skip element\n");
-			ra_rb_rotate(&temp_b, 'b');
-		}
-		operations++;
-	}
-	printf("\nOperations number is : %d \n", operations);
-
-
-	printf("\nPushing all values smaller than median to Stk B\n");
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-	printf("\nPushing back to A\n");
-
-	printf("\nSECOND PASS\n");
-
-	median = find_median(&temp_b);
-	operations = 0;
-	lst_size = ft_lstsize(temp_b);
-	printf("\nMedian is %d \n", median);
-	printf("\nLstsize is : %d \n", ft_lstsize(temp_b));
-
-	while (operations != lst_size)
-	{
-		if (temp_b->index < median) {
-			pa_push(&temp_b, &temp_a);
-		}
-		else if (temp_b->index >= median)
-		{
-			printf("Skip element\n");
-			ra_rb_rotate(&temp_b, 'b');
-		}
-		operations++;
-	}
-	printf("\nOperations number is : %d \n", operations);
-
-
-	printf("\nPushing all values smaller than median to Stk B\n");
-	printf("\nStk a is \n");
-	print_list(temp_a);
-	printf("\nStk b is \n");
-	print_list(temp_b);
-
-
-//	median = find_median(&temp_a);
-//	printf("\nMedian is %d \n", median);
-//
-//	operations = 0;
-//	while (operations != ft_lstsize(temp_a))
-//	{
-//		if (temp_a->index < median) {
-//			pb_push(&temp_a, &temp_b);
-//		}
-//		if (temp_a->index >= median)
-//		{
-//			printf("Skip element\n");
-//			ra_rb_rotate(&temp_a, 'a');
-//		}
-//		operations++;
-//	}
-//	printf("\nPushing all values smaller than median to Stk B\n");
-//	printf("\nStk a is \n");
-//	print_list(temp_a);
-//	printf("\nStk b is \n");
-//	print_list(temp_b);
-
-	exit (1);
 }
 
 
@@ -555,7 +396,7 @@ void sorting_algos(t_stack **lst, t_stack **stk_b, int randomvalue)
 
 	if (lst_size > 10)
 	{
-		sort_big(lst, stk_b);
+		sort_big(lst, stk_b, 8);
 
 //		if (randomvalue > 1073741823)
 //			random_sort1(lst);
