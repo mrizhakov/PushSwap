@@ -85,10 +85,10 @@ int		main(int argc, char **argv)
 
 	if (is_sorted(&stk_a) == 1)
 	{
-		printf("\nStk a is \n");
-		print_list(stk_a);
-		printf("\nStk b is \n");
-		print_list(stk_b);
+//		printf("\nStk a is \n");
+//		print_list(stk_a);
+//		printf("\nStk b is \n");
+//		print_list(stk_b);
 		printf("Sorted!");
 	}
 
