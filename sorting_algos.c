@@ -24,7 +24,7 @@ void sort_3_element_list(t_stack **stk_a) {
 //	printf("\nSort 3 says \n");
 //
 //	printf("\nStk a is \n");
-	print_list(*stk_a);
+//	print_list(*stk_a);
 
 
 	if (temp->local_index == 0) {
@@ -171,7 +171,7 @@ void push_smallest_to_b(t_stack **stk_a, t_stack **stk_b)
 	{
 		while (temp_a->local_index != 0)
 		{
-			rra_rotate(&temp_a);
+			rrb_rotate(&temp_a);
 			operations++;
 		}
 
@@ -202,23 +202,21 @@ void push_smallest_to_b(t_stack **stk_a, t_stack **stk_b)
 
 void push_smallest_to_b_in_chunks(t_stack **stk_a, t_stack **stk_b, int max_size)
 {
-//	printf("Push smallest to b!");
 	t_stack *temp_a;
 	t_stack *temp_b;
 	int position;
 	int lst_size;
 	int operations;
-    int index;
-
+    static int index;
 	temp_a = *stk_a;
 	temp_b = *stk_b;
-    index = 0;
+
 	position = 0;
 	normalize_local_indexes(&temp_a);
 	lst_size = ft_lstsize(temp_a);
 	operations = 0;
 
-    while (index != max_size && temp_a != NULL)
+    while (index <= max_size && temp_a != NULL)
     {
 //        printf("\nPush smallest to b chunks, index %d\n", index);
 //        printf("\nMax size %d\n", max_size);
@@ -226,71 +224,27 @@ void push_smallest_to_b_in_chunks(t_stack **stk_a, t_stack **stk_b, int max_size
 //        print_list(temp_a);
 //        printf("\nStk b is \n");
 //        print_list(temp_b);
-//        while (temp_a != NULL)
-//        {
-              if (temp_a->local_index != index)
-              {
-                rra_rotate(&temp_a);
-              }
-              if (temp_a->local_index == index)
+		while (temp_a->index > max_size)
+        {
+            rra_rotate(&temp_a);
+		}
+	    if (temp_a->index <= max_size)
               {
                pb_push(&temp_a, &temp_b);
                index++;
               }
         *stk_a = temp_a;
         *stk_b = temp_b;
-//        }
     }
-//    printf("\nAfter Push smallest to b chunks, index %d\n", index);
-
-
-
-    *stk_a = temp_a;
-    *stk_b = temp_b;
-
-//    printf("\nStk a is \n");
-//    print_list(temp_a);
-//    printf("\nStk b is \n");
-//    print_list(temp_b);
-//    exit (1);
-//
-//    while (index >= max_size) {
-//        while (temp_a->local_index != index) {
-//            position++;
-//            temp_a = temp_a->next;
-//        }
-//        temp_a = *stk_a;
-//
-//
-//        if (position > lst_size / 2) {
-//            while (temp_a->local_index != 0) {
-//                rra_rotate(&temp_a);
-//                operations++;
-//            }
-//
-//        }
-//        if (position <= lst_size / 2) {
-//            while (temp_a->local_index != 0) {
-//                ra_rb_rotate(&temp_a, 'a');
-//                operations++;
-//
-//            }
-//        }
-//        pb_push(&temp_a, &temp_b);
-//
-//        index++;
-//    }
-    //	printf("\nAfter pushing smallest node, resuls are  \n");
-//	printf("\nNumber of operations %i \n", operations);
-//
-//
+//	printf("\nFinished Push smallest to b chunks, index %d\n", index);
+//	printf("\nMax size %d\n", max_size);
 //	printf("\nStk a is \n");
 //	print_list(temp_a);
 //	printf("\nStk b is \n");
 //	print_list(temp_b);
-//
-//	*stk_a = temp_a;
-//	*stk_b = temp_b;
+    *stk_a = temp_a;
+    *stk_b = temp_b;
+
 }
 
 void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b)
@@ -301,13 +255,26 @@ void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b)
 	int position;
 	int lst_size;
 	int operations;
-
+//	temp_a = *stk_a;
+//	temp_b = *stk_b;
+	position = 0;
 	temp_a = *stk_a;
 	temp_b = *stk_b;
-	position = 0;
 	normalize_local_indexes(&temp_b);
+
 	lst_size = ft_lstsize(temp_b);
 	operations = 0;
+
+//	printf("\npush_smallest_to_a \n");
+//
+//
+//	printf("\nStk a is \n");
+//	print_list(temp_a);
+//	printf("\nStk b is \n");
+//	print_list(temp_b);
+	if (temp_b == NULL)
+		return ;
+
 	while (temp_b->local_index != 0)
 	{
 		position++;
@@ -319,7 +286,7 @@ void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b)
 	{
 		while (temp_b->local_index != 0)
 		{
-			rra_rotate(&temp_b);
+			rrb_rotate(&temp_b);
 			operations++;
 		}
 	}
@@ -344,6 +311,81 @@ void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b)
 	*stk_a = temp_a;
 	*stk_b = temp_b;
 }
+
+void push_biggest_to_a(t_stack **stk_a, t_stack **stk_b)
+{
+//	printf("Push smallest to b!");
+	t_stack *temp_a;
+	t_stack *temp_b;
+	int position;
+	int lst_size;
+	int operations;
+//	temp_a = *stk_a;
+//	temp_b = *stk_b;
+	position = 0;
+	temp_a = *stk_a;
+	temp_b = *stk_b;
+	normalize_local_indexes(&temp_b);
+
+	lst_size = ft_lstsize(temp_b);
+	operations = 0;
+
+//	printf("\npush_biggest_to_a \n");
+//
+//	printf("\nLst_size is %d\n", lst_size);
+//
+//	printf("\nStk a is \n");
+//	print_list(temp_a);
+//	printf("\nStk b is \n");
+//	print_list(temp_b);
+	if (temp_b == NULL)
+		return ;
+
+	while (temp_b->index != lst_size - 1)
+	{
+//		printf("\nStk a is \n");
+//		print_list(temp_a);
+//		printf("\nStk b is \n");
+//		print_list(temp_b);
+//		printf("\ntemp_b->index is %d\n", temp_b->index);
+//		printf("\nft_lstsize(temp_b) is %d\n", ft_lstsize(temp_b));
+//		printf("\nposition is %d\n", position);
+
+		position++;
+		temp_b = temp_b->next;
+	}
+	temp_b = *stk_b;
+
+	if (position > lst_size / 2)
+	{
+		while (temp_b->index != lst_size - 1)
+		{
+			rrb_rotate(&temp_b);
+			operations++;
+		}
+	}
+	if (position <= lst_size / 2)
+	{
+		while (temp_b->index != lst_size - 1)
+		{
+			ra_rb_rotate(&temp_b, 'b');
+			operations++;
+		}
+	}
+	pa_push(&temp_b, &temp_a);
+//	printf("\nAfter pushing smallest node, resuls are  \n");
+//	printf("\nNumber of operations %i \n", operations);
+//
+//
+//	printf("\nStk a is \n");
+//	print_list(temp_a);
+//	printf("\nStk b is \n");
+//	print_list(temp_b);
+
+	*stk_a = temp_a;
+	*stk_b = temp_b;
+}
+
 
 void sort_10(t_stack **stk_a, t_stack **stk_b)
 {
@@ -385,25 +427,23 @@ void sort_10(t_stack **stk_a, t_stack **stk_b)
 
 
 
-void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
-{
+void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks) {
 //    printf("Sort 100!");
-    t_stack *temp_a;
-    t_stack *temp_b;
-    int median;
-    int operations = 0;
-    int lst_size;
-    temp_a = *stk_a;
-    temp_b = *stk_b;
+	t_stack *temp_a;
+	t_stack *temp_b;
+	int median;
+	int operations = 0;
+	int lst_size;
+	temp_a = *stk_a;
+	temp_b = *stk_b;
 	int moves;
 
 
-
-    lst_size = ft_lstsize(temp_a);
+	lst_size = ft_lstsize(temp_a);
 	int chunk_min_size = 3;
-    int chunk_size;
+	int chunk_size;
 	int last_chunk_size;
-	while ((lst_size - 3) / chunks  < chunk_min_size)
+	while ((lst_size - 3) / chunks < chunk_min_size)
 		chunks++;
 
 	chunk_size = (lst_size - 3) / chunks;
@@ -411,8 +451,7 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 	if ((lst_size - 3) % chunks == 0)
 		last_chunk_size = chunk_size;
 
-	if ((lst_size - 3) % chunks != 0)
-	{
+	if ((lst_size - 3) % chunks != 0) {
 		chunk_size = (lst_size - 3) / chunks;
 		last_chunk_size = (lst_size - 3) - (chunk_size * chunks);
 		chunks++;
@@ -426,7 +465,7 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 //		if (chunk_size * chunks + last_chu== 0)
 //			chunks--;
 //	}
-    int current_chunk_size;
+	int current_chunk_size = -1;
 //	int last_chunk_size = (lst_size - 3) % chunks;
 
 //	printf("\nList size is %d \n", lst_size);
@@ -436,51 +475,57 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 
 
 
-	//exit (1);
+//	exit (1);
 
-	while (lst_size != 3 && chunks != 0)
-    {
-//        printf("\nChunk number %d \n", chunks);
-//
-//        printf("\nStk a is \n");
-//        print_list(temp_a);
-//        printf("\nStk b is \n");
-//        print_list(temp_b);
-        if (chunks == 1)
-		{
-	        current_chunk_size = last_chunk_size;
+//	while (lst_size != 3 && chunks != 0)
+//    {
+////        printf("\nChunk number %d \n", chunks);
+////
+////        printf("\nStk a is \n");
+////        print_list(temp_a);
+////        printf("\nStk b is \n");
+////        print_list(temp_b);
+
+	while (chunks != 0) {
+		if (chunks == 1) {
+			current_chunk_size = current_chunk_size + last_chunk_size;
 			moves = last_chunk_size;
-        }
+		}
 		if (chunks != 1) {
-			current_chunk_size = chunk_size;
+			current_chunk_size = current_chunk_size + chunk_size;
 			moves = chunk_size;
 		}
-	    while (moves != 0)
-        {
 //            printf("\nStuck here \n");
 
 //            if (is_reverse_sorted(&temp_b) == 0 || &temp_b == NULL)
 //            {
-//                printf("\nTemp b size is %d \n", ft_lstsize(temp_b));
-//                printf("\nCurrent chunk size is  %d\n", current_chunk_size);
-                push_smallest_to_b_in_chunks(&temp_a, &temp_b, (ft_lstsize(temp_b) + current_chunk_size));
+//		printf("\nChunks is  %d\n", chunks);
+////                printf("\nTemp b size is %d \n", ft_lstsize(temp_b));
+//		printf("\nCurrent chunk size is  %d\n", current_chunk_size);
+////		        printf("\nList_size b is  %d\n", ft_lstsize(temp_b));
+//		printf("\nList_size b + current chunk size is  %d\n", ft_lstsize(temp_b) + current_chunk_size);
+		push_smallest_to_b_in_chunks(&temp_a, &temp_b, current_chunk_size);
+
+//		        push_smallest_to_b_in_chunks(&temp_a, &temp_b, (ft_lstsize(temp_b) + current_chunk_size));
+		lst_size = ft_lstsize(temp_a);
 //            }
 //            push_smallest_to_b(&temp_a, &temp_b);
 
 //            printf("\ncCunk %d \n", chunks);
-//            printf("\nMoves is %d\n", moves);
+//		printf("\nMoves is %d\n", moves);
 //            printf("\nListsize is %d\n", lst_size);
 //            printf("\nCurrent Chunk size  is %d\n", current_chunk_size);
 
 
-            moves--;
-            lst_size--;
-			operations++;
-        }
+		moves--;
+		lst_size--;
+		operations++;
+		chunks--;
 
-        chunks--;
-
-    }
+	}
+//	printf("\nCurrent chunk size is %d long \n", current_chunk_size);
+//
+//
 //	printf("\nFinished push smallest to B, starting sort 3 on stack A \n");
 //
 //	printf("\nStk a is \n");
@@ -489,8 +534,10 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 //	print_list(temp_b);
 //	printf("\nOperations : %d \n", operations);
 
-//    if (is_sorted(&temp_a) == 0)
-//		sort_3_element_list(&temp_a);
+//	exit(1);
+
+	if (is_sorted(&temp_a) == 0)
+		sort_3_element_list(&temp_a);
 
 //	printf("\nFinished sort 3 on stack A \n");
 //
@@ -499,22 +546,48 @@ void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks)
 //	printf("\nStk b is \n");
 //	print_list(temp_b);
 
-
+//	exit(1);
 	operations = operations + 8;
-    lst_size = ft_lstsize(temp_b);
-    while (lst_size != 0)
-    {
-        pa_push(&temp_b, &temp_a);
-		operations++;
-        lst_size--;
-    }
+	lst_size = ft_lstsize(temp_b);
+	int index = 0;
+//	exit(1);
+	while (temp_b != NULL) {
+//		push_smallest_to_a(&temp_a, &temp_b);
+		push_biggest_to_a(&temp_a, &temp_b);
+
+//		printf("\nEnd of push smallest to a is \n");
+//		printf("\nStk a is \n");
+//		print_list(temp_a);
+//		printf("\nStk b is \n");
+//		print_list(temp_b);
+		//index++;
+//		exit(1);
+
+	}
+//	printf("\nEnd end  of push smallest to a is \n");
+//	printf("\nStk a is \n");
+//	print_list(temp_a);
+//	printf("\nStk b is \n");
+//	print_list(temp_b);
+	//index++;
+//	exit(1);
+
+//    while (lst_size != 0)
+//    {
+//        //pa_push(&temp_b, &temp_a);
+//	    if (temp_b != NULL)
+//			push_smallest_to_a(&temp_b, &temp_a);
+//		operations++;
+//        lst_size--;
+//    }
 //
 //    printf("\nEnd of sort_big is \n");
-////
 //    printf("\nStk a is \n");
 //    print_list(temp_a);
 //    printf("\nStk b is \n");
 //    print_list(temp_b);
+//	exit (1);
+
 //	printf("\nOperations : %d \n", operations);
 
     *stk_a = temp_a;

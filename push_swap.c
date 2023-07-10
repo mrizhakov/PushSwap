@@ -89,7 +89,7 @@ int		main(int argc, char **argv)
 //		print_list(stk_a);
 //		printf("\nStk b is \n");
 //		print_list(stk_b);
-		printf("Sorted!");
+//		printf("Sorted!");
 	}
 
 	//free_list(stk_a);

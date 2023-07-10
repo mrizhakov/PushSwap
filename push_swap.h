@@ -96,6 +96,8 @@ void push_smallest_to_b(t_stack **stk_a, t_stack **stk_b);
 void push_smallest_to_a(t_stack **stk_a, t_stack **stk_b);
 void push_smallest_to_b_in_chunks(t_stack **stk_a, t_stack **stk_b, int max_size);
 int is_reverse_sorted(t_stack **lst);
+void push_biggest_to_a(t_stack **stk_a, t_stack **stk_b);
+
 
 
 
