@@ -245,3 +245,25 @@ int ft_number_checker(const char *str)
 	}
 	return (0);
 }
+
+void ft_error_checker(char **checked_values, t_stack **stk_a)
+{
+	int checked_values_i;
+
+	checked_values_i = 0;
+
+	while (checked_values[checked_values_i] != NULL)
+	{
+		if ((ft_number_checker(checked_values[checked_values_i]) == 1)
+		    || ft_check_ll_doubles(stk_a, ft_long_long_atoi(checked_values[checked_values_i])) == 1)
+		{
+			free_list(*stk_a);
+			clean_ptrs(checked_values);
+			exit (1);
+		}
+		ft_lstadd_back(stk_a, ft_lstnew(ft_long_long_atoi(checked_values[checked_values_i])));
+		checked_values_i++;
+	}
+	clean_ptrs(checked_values);
+
+}

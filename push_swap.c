@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <time.h>
+
 int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
 	int i;
@@ -29,19 +29,23 @@ int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 			exit(1);
 		}
 		checked_values_i = 0;
-		while (checked_values[checked_values_i] != NULL)
-		{
-			if ((ft_number_checker(checked_values[checked_values_i]) == 1)
-			|| ft_check_ll_doubles(stk_a, ft_long_long_atoi(checked_values[checked_values_i])) == 1)
-			{
-				free_list(*stk_a);
-				clean_ptrs(checked_values);
-				exit (1);
-			}
-			ft_lstadd_back(stk_a, ft_lstnew(ft_long_long_atoi(checked_values[checked_values_i])));
-			checked_values_i++;
-		}
-		clean_ptrs(checked_values);
+		ft_error_checker(checked_values, stk_a);
+
+//		while (checked_values[checked_values_i] != NULL)
+//		{
+//
+//
+//			if ((ft_number_checker(checked_values[checked_values_i]) == 1)
+//			|| ft_check_ll_doubles(stk_a, ft_long_long_atoi(checked_values[checked_values_i])) == 1)
+//			{
+//				free_list(*stk_a);
+//				clean_ptrs(checked_values);
+//				exit (1);
+//			}
+//			ft_lstadd_back(stk_a, ft_lstnew(ft_long_long_atoi(checked_values[checked_values_i])));
+//			checked_values_i++;
+//		}
+//		clean_ptrs(checked_values);
 		i++;
 	}
 	return (0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_utils.c                                    :+:      :+:    :+:   */
+/*   sorting_algos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/06/27 12:54:51 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:56:37 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -347,14 +347,14 @@ int is_sorted(t_stack **lst)
 {
 	t_stack *temp1;
 	temp1 = *lst;
-    if (temp1 == NULL)
-        return (0);
+	if (temp1 == NULL)
+		return (0);
 	while (temp1->next != NULL)
-	{
-		if (temp1->content > temp1->next->content)
-			return (0);
-		temp1 = temp1->next;
-	}
+		{
+			if (temp1->content > temp1->next->content)
+				return (0);
+			temp1 = temp1->next;
+		}
 	return (1);
 }
 //
