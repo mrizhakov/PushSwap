@@ -39,19 +39,19 @@ int	ft_isdigit(int c)
 	return (1);
 }
 
-int ft_isdigit2(const char *str)
-{
-	int i;
-
-	i = 0;
-	while(str[i])
-	{
-		if(!ft_isdigit(str[i]))
-			return (-1);
-		i++;
-	}
-	return(0);
-}
+//int ft_isdigit2(const char *str)
+//{
+//	int i;
+//
+//	i = 0;
+//	while(str[i])
+//	{
+//		if(!ft_isdigit(str[i]))
+//			return (-1);
+//		i++;
+//	}
+//	return(0);
+//}
 
 char	**ft_free(char **strs, int j)
 {
@@ -162,17 +162,6 @@ char	**ft_split(char const *s, char c)
 	array[y] = 0;
 	return (array);
 }
-//
-//char	**ft_free_split(char **strs)
-//{
-//	int i;
-//
-//	i = 0;
-//	while (strs[i] != (void *)0)
-//		free(strs[i]);
-//	free(strs);
-//	return (NULL);
-//}
 
 void	clean_ptrs(char **double_ptr)
 {

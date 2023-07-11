@@ -19,12 +19,9 @@ void sa_sb_swap(t_stack **head, char flag)
 
 	if ( *head == NULL || (*head)->next == NULL)
 		return;
-	// resetting head one element down
 	original_stack = *head;
 	original_stack = original_stack->next;
-	// keeping track of the third element for later use
 	original_stack2 = original_stack->next;
-	//	taking the first element and connecting it downstream of the updated head
 	t_stack *first_element;
 	first_element = *head;
 	original_stack->next = first_element;
@@ -39,40 +36,37 @@ void sa_sb_swap(t_stack **head, char flag)
 		ft_putstr_fd("sb\n", 1);
 }
 
-void ss_swap(t_stack **head1, t_stack **head2, char flag)
-{
-	sa_sb_swap(head1, flag);
-	sa_sb_swap(head2, flag);
-	ft_putstr_fd("ss\n", 1);
-}
+//void ss_swap(t_stack **head1, t_stack **head2, char flag)
+//{
+//	sa_sb_swap(head1, flag);
+//	sa_sb_swap(head2, flag);
+//	ft_putstr_fd("ss\n", 1);
+//}
 
 void pa_push(t_stack **head_src, t_stack **head_dest)
 {
 	t_stack *tmp;
 
-	tmp = *head_src; //copy the head of source to tmp
+	tmp = *head_src;
 	if (*head_src == NULL)
 		return ;
 	ft_putstr_fd("pa\n", 1);
-	*head_src = (*head_src)->next;  //point the head of source one element down
-	tmp->next = *head_dest; //point the next of temp to destination
-	*head_dest = tmp; //update the head of destination to start with tmp
+	*head_src = (*head_src)->next;
+	tmp->next = *head_dest;
+	*head_dest = tmp;
 }
 
 void pb_push(t_stack **head_src, t_stack **head_dest)
 {
 	t_stack *tmp;
 
-	tmp = *head_src; //copy the head of source to tmp
-
+	tmp = *head_src;
 	if (*head_src == NULL)
 		return ;
-
 	ft_putstr_fd("pb\n", 1);
-
-	*head_src = (*head_src)->next;  //point the head of source one element down
-	tmp->next = *head_dest; //point the next of temp to destination
-	*head_dest = tmp; //update the head of destination to start with tmp
+	*head_src = (*head_src)->next;
+	tmp->next = *head_dest;
+	*head_dest = tmp;
 }
 
 t_stack *pop_head(t_stack **lst)
@@ -118,16 +112,15 @@ void	ra_rb_rotate(t_stack **lst, char flag)
 		ft_putstr_fd("ra\n", 1);
 	if (flag == 'b')
 		ft_putstr_fd("rb\n", 1);
-
 	ft_lstadd_back(lst, head);
 }
 
-void	rr_rotate(t_stack **lst1, t_stack **lst2, char flag)
-{
-	ra_rb_rotate(lst1, flag);
-	ra_rb_rotate(lst2, flag);
-	ft_putstr_fd("rr\n", 1);
-}
+//void	rr_rotate(t_stack **lst1, t_stack **lst2, char flag)
+//{
+//	ra_rb_rotate(lst1, flag);
+//	ra_rb_rotate(lst2, flag);
+//	ft_putstr_fd("rr\n", 1);
+//}
 
 void	rra_rotate(t_stack **lst)
 {
@@ -143,12 +136,12 @@ void	rrb_rotate(t_stack **lst)
 	ft_lstadd_front(lst, tail);
 }
 
-void	rrr_rotate(t_stack **lst1, t_stack**lst2)
-{
-	t_stack *tail1 = pop_tail(lst1);
-	t_stack *tail2 = pop_tail(lst2);
-
-	ft_putstr_fd("rrr\n", 1);
-	ft_lstadd_front(lst1, tail1);
-	ft_lstadd_front(lst2, tail2);
-}
+//void	rrr_rotate(t_stack **lst1, t_stack**lst2)
+//{
+//	t_stack *tail1 = pop_tail(lst1);
+//	t_stack *tail2 = pop_tail(lst2);
+//
+//	ft_putstr_fd("rrr\n", 1);
+//	ft_lstadd_front(lst1, tail1);
+//	ft_lstadd_front(lst2, tail2);
+//}

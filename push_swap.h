@@ -79,7 +79,7 @@ void    pa_push(t_stack **head_src, t_stack **head_dest);
 void normalize_indexes(t_stack **head);
 void normalize_local_indexes(t_stack **head);
 void print_list_with_indexes(t_stack **head);
-void sorting_algos(t_stack **stk_a, t_stack **stk_b, int randomvalue);
+void sorting_algos(t_stack **stk_a, t_stack **stk_b);
 void sort_big(t_stack **stk_a, t_stack **stk_b, int chunks);
 
 void sort_2_element_list(t_stack **lst, int flag);

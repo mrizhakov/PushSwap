@@ -1,1 +1,4 @@
-CMakeLists.txt not found in C:\Users\HP\CLionProjects\PushSwap Select CMakeLists.txt
+/sgoinfre/goinfre/Perso/mrizakov/clion-2022.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S "/nfs/homes/mrizakov/Desktop/Github 42 repo current/42/PushSwap" -B "/nfs/homes/mrizakov/Desktop/Github 42 repo current/42/PushSwap/cmake-build-debug"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /nfs/homes/mrizakov/Desktop/Github 42 repo current/42/PushSwap/cmake-build-debug
