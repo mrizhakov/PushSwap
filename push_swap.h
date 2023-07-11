@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2008/04/23 00:02:23 by aron              #+#    #+#             */
-/*   Updated: 2023/07/11 21:12:42 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:04:52 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void		sort_3_element_list1(t_stack **stk_a);
 void		sort_3_element_list2(t_stack **stk_a);
 void		pb_two_smallest_elements(t_stack **stk_a, t_stack **stk_b);
 void		adjust_chunk_size(t_stack **temp_a, t_stack **temp_b, int chunks);
+void		sort_4_element_list(t_stack **stk_a, t_stack **stk_b);
 #endif //PUSH_SWAP_H

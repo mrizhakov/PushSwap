@@ -142,7 +142,7 @@ int	ft_check_ll_doubles(t_stack **lst, int new)
 	{
 		if (temp->content == new)
 		{
-			ft_putstr_fd("Found a double! Try again", 1);
+			ft_putstr_fd("Error\n", 1);
 			return (1);
 		}
 		temp = temp->next;

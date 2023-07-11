@@ -29,7 +29,7 @@ int	ft_is_number(char *str)
 	{
 		if (*str < '0' || *str > '9')
 		{
-			ft_putstr_fd("Number checker says Not a number!", 1);
+			ft_putstr_fd("Error\n", 1);
 			return (1);
 		}
 		while (*str >= 48 && *str <= 57)
@@ -56,7 +56,7 @@ int	ft_is_min_max_int(char *str)
 			result = result * 10 + *str++ - '0';
 	if (result * positive > INT_MAX || result * positive < INT_MIN)
 	{
-		ft_putstr_fd("Value outside of INT range!", 1);
+		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
 	return (0);

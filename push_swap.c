@@ -34,6 +34,26 @@ int	ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 	return (0);
 }
 
+//int	main(int argc, char **argv)
+//{
+//	t_stack	*stk_a;
+//	t_stack	*stk_b;
+//
+//	stk_a = NULL;
+//	stk_b = NULL;
+//	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
+//	{
+//		free_list(stk_a);
+//		return (1);
+//	}
+//	normalize_indexes(&stk_a);
+//	while (is_sorted(&stk_a) == 0)
+//		sorting_algos(&stk_a, &stk_b);
+//	free_list(stk_a);
+//	free_list(stk_b);
+//	return (0);
+//}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stk_a;
