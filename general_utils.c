@@ -6,99 +6,15 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/06/27 12:54:51 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:45:18 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putchar_fd(char c, int fd)
+size_t	ft_strlen(const char *str)
 {
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-}
-
-
-
-int	ft_isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-	{
-	}
-	else
-	{
-		return (0);
-	}
-	return (1);
-}
-
-//int ft_isdigit2(const char *str)
-//{
-//	int i;
-//
-//	i = 0;
-//	while(str[i])
-//	{
-//		if(!ft_isdigit(str[i]))
-//			return (-1);
-//		i++;
-//	}
-//	return(0);
-//}
-
-char	**ft_free(char **strs, int j)
-{
-	while (j-- > 0)
-		free(strs[j]);
-	free(strs);
-	return (NULL);
-}
-
-int	ft_word_count(const char *str, char c)
-{
-	int	i;
-	int	trigger;
-
-	i = 0;
-	trigger = 0;
-	while (*str)
-	{
-		if (*str != c && trigger == 0)
-		{
-			trigger = 1;
-			i++;
-		}
-		else if (*str == c)
-			trigger = 0;
-		str++;
-	}
-	return (i);
-}
-
-int	ft_size_word(const char *s, char c, int i)
-{
-	int	word_size;
-
-	word_size = 0;
-	while (s[i] != c && s[i])
-	{
-		word_size++;
-		i++;
-	}
-	return (word_size);
-}
-
-size_t ft_strlen(const char *str)
-{
-	size_t    counter;
+	size_t	counter;
 
 	counter = 0;
 	while (str[counter] != '\0')
@@ -177,45 +93,14 @@ void	clean_ptrs(char **double_ptr)
 	free(double_ptr);
 }
 
-//long long ft_long_long_atoi(const char *str)
-//{
-//	unsigned int	str_c;
-//	long long   	result;
-//	int				positive;
-//
-//	str_c = 0;
-//	positive = 1;
-//	result = 0;
-//	while (str[str_c] == 32 || (str[str_c] >= 9
-//	                            && str[str_c] <= 13))
-//		str_c++;
-//	if (str[str_c] == 45)
-//	{
-//		positive = -1;
-//		str_c++;
-//	}
-//	else if (str[str_c] == 43)
-//		str_c++;
-//	while (str[str_c] != '\0')
-//	{
-//		while (str[str_c] >= 48 && str[str_c] <= 57)
-//		{
-//			result = result * 10 + str[str_c] - '0';
-//			str++;
-//		}
-//	}
-//	return (result * positive);
-//}
-
-long long ft_long_long_atoi(const char *str)
+long long	ft_long_long_atoi(const char *str)
 {
-	long long   	result;
-	int				positive;
+	long long	result;
+	int			positive;
 
 	positive = 1;
 	result = 0;
-	while (*str == 32 || (*str >= 9
-	                            && *str <= 13))
+	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == 45)
 	{
@@ -228,110 +113,4 @@ long long ft_long_long_atoi(const char *str)
 		while (*str >= 48 && *str <= 57)
 			result = result * 10 + *str++ - '0';
 	return (result * positive);
-}
-
-
-//int ft_number_checker(const char *str)
-//{
-//	long long       result;
-//	int				positive;
-//
-//	positive = 1;
-//	result = 0;
-//	while (*str == 32 || (*str >= 9 && *str <= 13))
-//		str++;
-//	if (*str == 45)
-//		positive = -1;
-//	if (*str == 45 || *str == 43)
-//		str++;
-//	while (*str)
-//	{
-//		if (*str < '0' || *str > '9')
-//		{
-//			ft_putstr_fd("Number checker says Not a number!", 1);
-//			return (1);
-//		}
-//		while (*str >= 48 && *str <= 57)
-//			result = result * 10 + *str++ - '0';
-//	}
-//	if (result * positive > INT_MAX || result * positive < INT_MIN)
-//	{
-//		ft_putstr_fd("Number checker says Value outside of INT range! Try again", 1);
-//		return (1);
-//	}
-//	return (0);
-//}
-
-int ft_is_number(char *str)
-{
-	long long       result;
-	int				positive;
-
-	positive = 1;
-	result = 0;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == 45)
-		positive = -1;
-	if (*str == 45 || *str == 43)
-		str++;
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-		{
-			ft_putstr_fd("Number checker says Not a number!", 1);
-			return (1);
-		}
-		while (*str >= 48 && *str <= 57)
-			result = result * 10 + *str++ - '0';
-	}
-	return (0);
-}
-
-
-int ft_is_min_max_int(char *str)
-{
-	long long       result;
-	int				positive;
-
-	positive = 1;
-	result = 0;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == 45)
-		positive = -1;
-	if (*str == 45 || *str == 43)
-		str++;
-	while (*str)
-		while (*str >= 48 && *str <= 57)
-			result = result * 10 + *str++ - '0';
-	if (result * positive > INT_MAX || result * positive < INT_MIN)
-	{
-		ft_putstr_fd("Number checker says Value outside of INT range! Try again", 1);
-		return (1);
-	}
-	return (0);
-}
-
-void ft_error_checker(char **checked_values, t_stack **stk_a)
-{
-	int checked_values_i;
-
-	checked_values_i = 0;
-
-	while (checked_values[checked_values_i] != NULL)
-	{
-		if (ft_is_number(checked_values[checked_values_i]) == 1
-			|| ft_is_min_max_int(checked_values[checked_values_i]) == 1
-			|| ft_check_ll_doubles(stk_a, ft_long_long_atoi(checked_values[checked_values_i])) == 1)
-		{
-			free_list(*stk_a);
-			clean_ptrs(checked_values);
-			exit (1);
-		}
-		ft_lstadd_back(stk_a, ft_lstnew(ft_long_long_atoi(checked_values[checked_values_i])));
-		checked_values_i++;
-	}
-	clean_ptrs(checked_values);
-
 }

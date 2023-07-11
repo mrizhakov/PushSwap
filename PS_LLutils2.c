@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/06/27 12:54:44 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:22:56 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,27 +102,27 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	temp->next = new;
 }
 
-void free_list2(t_stack** head)
-{
-	t_stack* current;
-	current = *head;
-	t_stack* next;
+// void free_list2(t_stack** head)
+// {
+// 	t_stack* current;
+// 	current = *head;
+// 	t_stack* next;
 
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	*head = current;
-}
+// 	while (current != NULL)
+// 	{
+// 		next = current->next;
+// 		free(current);
+// 		current = next;
+// 	}
+// 	*head = current;
+// }
 
-void free_list(t_stack* head)
+void	free_list(t_stack	*head)
 {
-	t_stack* current;
-	t_stack* next;
+	t_stack	*current;
+	t_stack	*next;
+
 	current = head;
-
 	while (current != NULL)
 	{
 		next = current->next;
@@ -146,7 +146,7 @@ void print_list(t_stack *head)
 	}
 }
 
-int ft_check_ll_doubles(t_stack **lst, int new)
+int	ft_check_ll_doubles(t_stack **lst, int new)
 {
 	t_stack	*temp;
 
@@ -164,5 +164,3 @@ int ft_check_ll_doubles(t_stack **lst, int new)
 	}
 	return (0);
 }
-
-

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_utils.c                                    :+:      :+:    :+:   */
+/*   pushswap_operations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/06/27 12:54:51 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:25:02 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sa_sb_swap(t_stack **head, char flag)
+void	sa_sb_swap(t_stack **head, char flag)
 {
-	t_stack *original_stack;
-	t_stack *original_stack2;
+	t_stack	*original_stack;
+	t_stack	*original_stack2;
+	t_stack	*first_element;
 
-	if ( *head == NULL || (*head)->next == NULL)
-		return;
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
 	original_stack = *head;
 	original_stack = original_stack->next;
 	original_stack2 = original_stack->next;
-	t_stack *first_element;
 	first_element = *head;
 	original_stack->next = first_element;
 	if ((*head)->next->next == NULL)
@@ -43,9 +43,9 @@ void sa_sb_swap(t_stack **head, char flag)
 //	ft_putstr_fd("ss\n", 1);
 //}
 
-void pa_push(t_stack **head_src, t_stack **head_dest)
+void	pa_push(t_stack **head_src, t_stack **head_dest)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *head_src;
 	if (*head_src == NULL)
@@ -56,9 +56,9 @@ void pa_push(t_stack **head_src, t_stack **head_dest)
 	*head_dest = tmp;
 }
 
-void pb_push(t_stack **head_src, t_stack **head_dest)
+void	pb_push(t_stack	**head_src, t_stack	**head_dest)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *head_src;
 	if (*head_src == NULL)
@@ -69,26 +69,26 @@ void pb_push(t_stack **head_src, t_stack **head_dest)
 	*head_dest = tmp;
 }
 
-t_stack *pop_head(t_stack **lst)
+t_stack	*pop_head(t_stack	**lst)
 {
 	t_stack	*first_node;
 
 	if (*lst == NULL)
-		return NULL;
+		return (NULL);
 	first_node = *lst;
 	*lst = (*lst)->next;
 	first_node->next = NULL;
 	return (first_node);
 }
 
-t_stack *pop_tail(t_stack **lst)
+t_stack	*pop_tail(t_stack	**lst)
 {
 	t_stack	*temp;
 	t_stack	*last_node;
-	temp = *lst;
 
+	temp = *lst;
 	if (*lst == NULL)
-		return NULL;
+		return (NULL);
 	if (temp->next == NULL)
 	{
 		last_node = temp;
@@ -103,45 +103,3 @@ t_stack *pop_tail(t_stack **lst)
 	last_node->next = NULL;
 	return (last_node);
 }
-
-void	ra_rb_rotate(t_stack **lst, char flag)
-{
-	t_stack *head = pop_head(lst);
-
-	if (flag == 'a')
-		ft_putstr_fd("ra\n", 1);
-	if (flag == 'b')
-		ft_putstr_fd("rb\n", 1);
-	ft_lstadd_back(lst, head);
-}
-
-//void	rr_rotate(t_stack **lst1, t_stack **lst2, char flag)
-//{
-//	ra_rb_rotate(lst1, flag);
-//	ra_rb_rotate(lst2, flag);
-//	ft_putstr_fd("rr\n", 1);
-//}
-
-void	rra_rotate(t_stack **lst)
-{
-	t_stack *tail = pop_tail(lst);
-	ft_putstr_fd("rra\n", 1);
-	ft_lstadd_front(lst, tail);
-}
-
-void	rrb_rotate(t_stack **lst)
-{
-	t_stack *tail = pop_tail(lst);
-	ft_putstr_fd("rrb\n", 1);
-	ft_lstadd_front(lst, tail);
-}
-
-//void	rrr_rotate(t_stack **lst1, t_stack**lst2)
-//{
-//	t_stack *tail1 = pop_tail(lst1);
-//	t_stack *tail2 = pop_tail(lst2);
-//
-//	ft_putstr_fd("rrr\n", 1);
-//	ft_lstadd_front(lst1, tail1);
-//	ft_lstadd_front(lst2, tail2);
-//}

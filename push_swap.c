@@ -12,48 +12,33 @@
 
 #include "push_swap.h"
 
-int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
+int	ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
-	int i;
-	char **checked_values;
+	int		i;
+	char	**checked_values;
 
 	i = 1;
 	if (argc < 2)
 		return (1);
-	while (i+1 <= argc)
+	while (i + 1 <= argc)
 	{
-		if (!(checked_values = ft_split(argv[i], ' ')))
+		checked_values = ft_split(argv[i], ' ');
+		if (!(checked_values))
 		{
 			free(checked_values);
 			exit(1);
 		}
 		ft_error_checker(checked_values, stk_a);
-
-//		while (checked_values[checked_values_i] != NULL)
-//		{
-//
-//
-//			if ((ft_number_checker(checked_values[checked_values_i]) == 1)
-//			|| ft_check_ll_doubles(stk_a, ft_long_long_atoi(checked_values[checked_values_i])) == 1)
-//			{
-//				free_list(*stk_a);
-//				clean_ptrs(checked_values);
-//				exit (1);
-//			}
-//			ft_lstadd_back(stk_a, ft_lstnew(ft_long_long_atoi(checked_values[checked_values_i])));
-//			checked_values_i++;
-//		}
-//		clean_ptrs(checked_values);
 		i++;
 	}
 	return (0);
 }
 
-
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stk_a;
-	t_stack *stk_b;
+	t_stack	*stk_a;
+	t_stack	*stk_b;
+
 	stk_a = NULL;
 	stk_b = NULL;
 	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
@@ -72,7 +57,7 @@ int		main(int argc, char **argv)
 		print_list(stk_b);
 		printf("Sorted!");
 	}
-	free_list2(&stk_a);
+	free_list(stk_a);
 	free_list(stk_b);
 	return (0);
 }
