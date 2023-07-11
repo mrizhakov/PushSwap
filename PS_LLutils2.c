@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/07/11 18:22:56 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:32:58 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,21 +128,6 @@ void	free_list(t_stack	*head)
 		next = current->next;
 		free(current);
 		current = next;
-	}
-}
-
-void print_list(t_stack *head)
-{
-	ft_putstr_fd("Value   Index   Local index\n", 1);
-	t_stack *temp;
-	temp = head;
-
-	while (temp!= NULL)
-	{
-		printf("%d         ", temp->content);
-		printf("%d         ", temp->index);
-		printf("%d\n", temp->local_index);
-		temp = temp->next;
 	}
 }
 
