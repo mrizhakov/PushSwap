@@ -16,7 +16,6 @@ int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
 	int i;
 	char **checked_values;
-	int checked_values_i;
 
 	i = 1;
 	if (argc < 2)
@@ -28,7 +27,6 @@ int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 			free(checked_values);
 			exit(1);
 		}
-		checked_values_i = 0;
 		ft_error_checker(checked_values, stk_a);
 
 //		while (checked_values[checked_values_i] != NULL)
