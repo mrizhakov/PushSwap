@@ -97,4 +97,5 @@ int			ft_is_min_max_int(char *str);
 void		sort_3_element_list1(t_stack **stk_a);
 void		sort_3_element_list2(t_stack **stk_a);
 void		pb_two_smallest_elements(t_stack **stk_a, t_stack **stk_b);
+void		adjust_chunk_size(t_stack **temp_a, t_stack **temp_b, int chunks);
 #endif //PUSH_SWAP_H
