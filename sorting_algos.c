@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/07/11 21:13:14 by mrizakov         ###   ########.fr       */
+/*   Updated: 2023/07/15 21:58:07 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,11 @@ void	sort_5_element_list(t_stack **stk_a, t_stack **stk_b)
 	t_stack	*temp1;
 	t_stack	*temp2;
 
-	pb_two_smallest_elements(stk_a, stk_b);
 	temp1 = *stk_a;
 	temp2 = *stk_b;
+	normalize_indexes(&temp1);
+	push_smallest_to_b(&temp1, &temp2);
+	push_smallest_to_b(&temp1, &temp2);
 	if (is_sorted(&temp1) == 0)
 		sort_3_element_list(&temp1);
 	pa_push(&temp2, &temp1);
@@ -127,6 +129,22 @@ void	sort_5_element_list(t_stack **stk_a, t_stack **stk_b)
 	*stk_b = temp2;
 }
 
+// old version which  was taking 13 steps with the combination 3 5 4 2 1
+//void	sort_5_element_list(t_stack **stk_a, t_stack **stk_b)
+//{
+//	t_stack	*temp1;
+//	t_stack	*temp2;
+//
+//	pb_two_smallest_elements(stk_a, stk_b);
+//	temp1 = *stk_a;
+//	temp2 = *stk_b;
+//	if (is_sorted(&temp1) == 0)
+//		sort_3_element_list(&temp1);
+//	pa_push(&temp2, &temp1);
+//	pa_push(&temp2, &temp1);
+//	*stk_a = temp1;
+//	*stk_b = temp2;
+//}
 // void	sort_5_element_list(t_stack **stk_a, t_stack **stk_b)
 // {
 // 	t_stack	*temp1;
