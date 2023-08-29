@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   PS_LLutils3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 19:56:29 by mrizakov          #+#    #+#             */
-/*   Updated: 2023/06/27 12:55:46 by mrizakov         ###   ########.fr       */
+/*   Created: 2023/04/08 18:48:26 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/07/11 21:06:19 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+void	print_list(t_stack *head)
 {
-	int		i;
-	t_list	*temp;
+	t_stack	*temp;
 
-	i = 0;
-	temp = lst;
-	if (lst == NULL)
-		return (0);
-	while (temp->next != NULL)
+	temp = head;
+	ft_putstr_fd("Value   Index   Local index\n", 1);
+	while (temp != NULL)
 	{
-		i++;
+		printf("%d         ", temp->content);
+		printf("%d         ", temp->index);
+		printf("%d\n", temp->local_index);
 		temp = temp->next;
 	}
-	if (temp->next == NULL)
-		i++;
-	return (i);
 }
